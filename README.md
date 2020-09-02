@@ -1,4 +1,4 @@
-# p1mfa-serverprofile
+# PingOne MFA for PingFederate Quickstart
 
 PingFederate server profile which configures P14C for 1FA (using html form adapter and P14C PCV), and 2FA (using the new P14C MFA Adapter).
 
