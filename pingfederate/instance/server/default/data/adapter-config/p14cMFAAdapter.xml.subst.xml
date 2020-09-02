@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:AdapterConfiguration authnCtxClassRef="" isInheritAttributeSettings="false" isInheritAttributeMapping="false" maskOgnlValues="false" isInheritExtendedContractAttributes="false" name="p14cMFAAdapter" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="Environment ID">9ebd2cf7-aaee-4bc7-87c6-e8db3160155b</urn:Field>
+        <urn:Field name="End User Client ID">${P14CMFA_ENDUSER_CLIENTID}</urn:Field>
+        <urn:Field name="End User Client Secret">${P14CMFA_ENDUSER_CLIENTSECRET}</urn:Field>
+        <urn:Field name="Worker Client ID">${P14CMFA_WORKER_CLIENTID}</urn:Field>
+        <urn:Field name="Worker Client Secret">${P14CMFA_WORKER_CLIENTSECRET}</urn:Field>
+        <urn:Field name="Authentication Policy"/>
+        <urn:Field name="HTML Template Prefix">pingone-mfa</urn:Field>
+        <urn:Field name="Messages Files">pingone-mfa-adapter-messages</urn:Field>
+        <urn:Field name="User Not Found Failure Mode">Bypass Authentication</urn:Field>
+        <urn:Field name="Service Unavailable Failure Mode">Bypass Authentication</urn:Field>
+        <urn:Field name="Change Device">Allow</urn:Field>
+        <urn:Field name="Success Screens">true</urn:Field>
+        <urn:Field name="Error Screens">true</urn:Field>
+        <urn:Field name="Timeout Screens">true</urn:Field>
+        <urn:Field name="PingOne Authentication API">https://auth.pingone.com</urn:Field>
+        <urn:Field name="PingOne Management API">https://api.pingone.com</urn:Field>
+        <urn:Field name="API Request Timeout">2000</urn:Field>
+        <urn:Field name="Proxy Settings">System Defaults</urn:Field>
+        <urn:Field name="Custom Proxy Host"/>
+        <urn:Field name="Custom Proxy Port"/>
+    </urn:Fields>
+    <urn:AdvancedFields>
+        <urn:Field name="HTML Template Prefix">pingone-mfa</urn:Field>
+        <urn:Field name="Messages Files">pingone-mfa-adapter-messages</urn:Field>
+        <urn:Field name="User Not Found Failure Mode">Bypass Authentication</urn:Field>
+        <urn:Field name="Service Unavailable Failure Mode">Bypass Authentication</urn:Field>
+        <urn:Field name="Change Device">Allow</urn:Field>
+        <urn:Field name="Success Screens">true</urn:Field>
+        <urn:Field name="Error Screens">true</urn:Field>
+        <urn:Field name="Timeout Screens">true</urn:Field>
+        <urn:Field name="PingOne Authentication API">https://auth.pingone.com</urn:Field>
+        <urn:Field name="PingOne Management API">https://api.pingone.com</urn:Field>
+        <urn:Field name="API Request Timeout">2000</urn:Field>
+        <urn:Field name="Proxy Settings">System Defaults</urn:Field>
+        <urn:Field name="Custom Proxy Host"/>
+        <urn:Field name="Custom Proxy Port"/>
+    </urn:AdvancedFields>
+    <urn:Tables/>
+    <urn:ExtendedContractAttributes/>
+    <urn:UniqueKeyField>id_token</urn:UniqueKeyField>
+    <urn:AttributeMapping>
+        <urn1:AttributeMap Name="access_token" Type="Adapter" Value="access_token" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        <urn1:AttributeMap Name="pingone.mfa.status" Type="Adapter" Value="pingone.mfa.status" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        <urn1:AttributeMap Name="id_token" Type="Adapter" Value="id_token" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        <urn1:AttributeMap Name="pingone.mfa.status.reason" Type="Adapter" Value="pingone.mfa.status.reason" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+    </urn:AttributeMapping>
+</urn:AdapterConfiguration>

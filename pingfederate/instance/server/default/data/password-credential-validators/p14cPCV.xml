@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:PluginConfiguration isInheritExtendedContractAttributes="false" name="p14cPCV" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="PingOne For Customers Datastore">Other-453F4252F7FBCF731978D757DA83F97115E4B53D</urn:Field>
+        <urn:Field name="Case-Sensitive Matching">true</urn:Field>
+        <urn:Field name="Display Name Attribute"/>
+        <urn:Field name="PingID Username Attribute"/>
+        <urn:Field name="Username Attribute"/>
+        <urn:Field name="Mail Verified Attribute"/>
+        <urn:Field name="Mail Attribute"/>
+        <urn:Field name="SMS Attribute"/>
+    </urn:Fields>
+    <urn:AdvancedFields>
+        <urn:Field name="Display Name Attribute"/>
+        <urn:Field name="PingID Username Attribute"/>
+        <urn:Field name="Username Attribute"/>
+        <urn:Field name="Mail Verified Attribute"/>
+        <urn:Field name="Mail Attribute"/>
+        <urn:Field name="SMS Attribute"/>
+    </urn:AdvancedFields>
+    <urn:Tables>
+        <urn:Table name="Authentication Error Overrides"/>
+    </urn:Tables>
+    <urn:ExtendedContractAttributes/>
+</urn:PluginConfiguration>
