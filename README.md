@@ -5,7 +5,7 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
 1. Instantiate your own override.env from override.env.template.
 2. Configure an MFA only Authentication Policy.
   - Call it something like "MFA-Only-Policy".
-3. Configure override.env with a native app and worker app as instructed for the p14c adapter.
+3. Configure override.env (instantiate from override.env.template) providing client details for the native worker app as instructed by the p14c adapter.
   - Worker app
     - Roles: Identity Data Admin
   - Native app
