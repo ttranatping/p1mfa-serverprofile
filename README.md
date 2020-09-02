@@ -30,8 +30,9 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
         - P14C_WORKER_CLIENTSECRET=
         - P14C_ENDUSER_CLIENTID=
         - P14C_ENDUSER_CLIENTSECRET=
-4. Start the docker container:
+4. Start the docker container using one of the two methods:
     - docker-compose up -d
+    - docker run -p 9031:9031 -p 9999:9999 -it --env-file override.env --env-file ~/.pingidentity/devops --rm  "pingidentity/pingfederate:edge"
 5. Start the sample OAuth2 flow: 
     - https://localhost:9031/as/authorization.oauth2?client_id=sampleclient&response_type=token
 6. Log in with a P14C user that has MFA enabled.
