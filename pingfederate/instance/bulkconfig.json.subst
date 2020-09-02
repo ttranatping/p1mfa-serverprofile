@@ -381,7 +381,7 @@
       "items": [
         {
           "username": "Administrator",
-          "encryptedPassword": "OBF:JWE:eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiUWVzOVR5eTV5WiIsInZlcnNpb24iOiIxMC4xLjAuOCJ9..lbRnCXxDFA77TnVmbzWmlA.50aOiHl_nupFm48YUsN3T9mqz_rkUhET_ipolYHEOStGuGMJAUYjLuCxC6oltnhQxEnqZFZRAXKDPAShuGCIZA.c3a0m7JZnmRUGWMcvKWxpw",
+          "password": "${PING_IDENTITY_PASSWORD}",
           "description": "Initial administrator user.",
           "auditor": false,
           "active": true,
