@@ -6,10 +6,12 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
 1. Instantiate your own override.env from override.env.template.
 2. Configure an MFA only Authentication Policy.
      - Example name: "MFA-Only-Policy".
-3. Configure override.env (instantiate from override.env.template) providing client details for the native worker app as instructed by the p14c adapter.
+3. Create 2x OAuth clients in P14C as instructed by the p14c adapter.
      - Worker app
+       - Example name: PF Adapter Worker Client
        - Roles: Identity Data Admin
      - Native app
+       - Example name: PF Adapter End User Client
        - Scope: openid+profile
        - Response Types: ID Token, Token
        - Grant Type: Implicit
@@ -18,6 +20,13 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
 
 ## Launch docker and test
 
-1. Run: docker-compose up -d
-2. Launch: https://localhost:9031/as/authorization.oauth2?client_id=sampleclient&response_type=token
-3. Log in with a P14C user that has MFA enabled.
+1. Pull this git project.
+  - git clone https://github.com/ttranatping/p1mfa-serverprofile.git
+2. Navigate to the p1mfa-serverprofile folder.
+3. Configure override.env providing client details for the native and worker app.
+  - instantiate from override.env.template.
+4. Start the docker container:
+  - docker-compose up -d
+5. Start the sample OAuth2 flow: 
+  - https://localhost:9031/as/authorization.oauth2?client_id=sampleclient&response_type=token
+6. Log in with a P14C user that has MFA enabled.
