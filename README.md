@@ -3,10 +3,9 @@
 PingFederate server profile which configures P14C for 1FA (using html form adapter and P14C PCV), and 2FA (using the new P14C MFA Adapter).
 
 ## P14C Configuration
-1. Instantiate your own override.env from override.env.template.
-2. Configure an MFA only Authentication Policy.
+1. Configure an MFA only Authentication Policy.
      - Example name: "MFA-Only-Policy".
-3. Create 2x OAuth clients in P14C as instructed by the p14c adapter.
+2. Create 2x OAuth clients in P14C as instructed by the p14c adapter.
      - Worker app
        - Example name: PF Adapter Worker Client
        - Roles: Identity Data Admin
@@ -16,7 +15,7 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
        - Response Types: ID Token, Token
        - Grant Type: Implicit
        - Policy: MFA-Only-Policy
-4. [Create a user](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user), [enable MFA](https://apidocs.pingidentity.com/pingone/platform/v1/api/#put-update-user-mfa-enabled), add MFA devices ([sms](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-sms)|[email](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-email)).
+3. [Create a user](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user), [enable MFA](https://apidocs.pingidentity.com/pingone/platform/v1/api/#put-update-user-mfa-enabled), add MFA devices ([sms](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-sms)|[email](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-email)).
 
 ## Launch docker and test
 
