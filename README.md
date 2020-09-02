@@ -14,7 +14,7 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
        - Response Types: ID Token, Token
        - Grant Type: Implicit
        - Policy: MFA-Only-Policy
-4. Create users, enable MFA, add MFA devices.
+4. [Create a user](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user), [enable MFA](https://apidocs.pingidentity.com/pingone/platform/v1/api/#put-update-user-mfa-enabled), add MFA devices ([sms](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-sms)|[email](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-email)).
 
 ## Launch docker and test
 
