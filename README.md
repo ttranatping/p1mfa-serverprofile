@@ -24,6 +24,12 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
 2. Navigate to the p1mfa-serverprofile folder.
 3. Configure override.env providing client details for the native and worker app.
     - instantiate from override.env.template.
+    - At minimum, update the following:
+        - P14C_ENVIRONMENTID=
+        - P14C_WORKER_CLIENTID=
+        - P14C_WORKER_CLIENTSECRET=
+        - P14C_ENDUSER_CLIENTID=
+        - P14C_ENDUSER_CLIENTSECRET=
 4. Start the docker container:
     - docker-compose up -d
 5. Start the sample OAuth2 flow: 
