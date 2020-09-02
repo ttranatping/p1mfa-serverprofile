@@ -67,7 +67,9 @@
         {
           "id": "AllowedTrackedParams",
           "type": "LIST",
-          "listValue": []
+          "listValue": [
+            "mobilePayload"
+          ]
         }
       ]
     },
