@@ -3,6 +3,9 @@
 PingFederate server profile which configures P14C for 1FA (using html form adapter and P14C PCV), and 2FA (using the new P14C MFA Adapter).
 
 ## P14C Configuration
+
+A [postman collection](postman_setup_p1mfa.json) is provided to help you get you set up quickly. However, here are the manual steps:
+
 1. Configure an MFA only Authentication Policy.
      - Example name: "MFA-Only-Policy".
 2. Create 2x OAuth clients in P14C as instructed by the p14c adapter.
