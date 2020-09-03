@@ -4,7 +4,24 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
 
 ## P14C Configuration
 
-A [postman collection](postman_setup_p1mfa.json) is provided to help you get you set up quickly. However, here are the manual steps:
+A postman collection is provided to help you get you set up quickly. 
+
+1. Import the [postman collection](postman_setup_p1mfa.json) into Postman.
+2. Configure the collection variables (right click collection and edit it).
+    - Set the parent environment settings:
+      - parentEnvID
+      - adminAppID (worker app configured in your parent environment)
+      - adminAppSecret
+3. Configure an empty Postman environment.
+4. Execute the Postman requests in sequence.
+5. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
+    - environmentId -> P14C_ENVIRONMENTID
+    - workerapp-client_id -> P14C_WORKER_CLIENTID
+    - workerapp-client_secret -> P14C_WORKER_CLIENTSECRET
+    - enduser-client_id -> P14C_ENDUSER_CLIENTID
+    - enduser-client_secret -> P14C_ENDUSER_CLIENTSECRET
+
+Alternatively you can run the following manual steps:
 
 1. Configure an MFA only Authentication Policy.
      - Example name: "MFA-Only-Policy".
