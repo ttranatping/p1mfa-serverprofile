@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "152d6a9c-64d2-4a89-99fe-4a0e5ef96836",
+		"_postman_id": "d4cd7ae2-564d-44ff-bd9c-60eb717333fb",
 		"name": "P14MFA Demo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "511b5271-83eb-4b5d-b948-6a95e77f0038",
+								"id": "c8e975b2-7571-4d9c-b703-d08da80af029",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -115,7 +115,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9ccd6f1e-9ebb-4799-a9e7-50f5dbb0e583",
+								"id": "11095658-cd75-4053-b77e-589b0155a387",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -169,7 +169,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2621df31-6cef-422f-b101-c88ff7151aed",
+								"id": "5052adb7-5c47-4bc5-aab8-77b3116c8571",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -227,7 +227,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a3118100-b11c-4385-acaa-a75ec71b0bc1",
+								"id": "dcbb5e84-aa78-41a8-9562-9c25a801a806",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -280,7 +280,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6281dfc1-d701-4e71-8873-d08dbe03486f",
+								"id": "39a1d1a3-bef9-4f98-a5e7-755984a73e4d",
 								"exec": [
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -341,7 +341,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b98e1bf0-5125-4b89-b44f-a29c631f03d6",
+								"id": "e41792e4-97e5-43cc-bb3d-a4db148f3929",
 								"exec": [
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -404,7 +404,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "616ba4bd-5556-4b2b-9026-33dfaf80ab8f",
+								"id": "3a0d45b0-991f-45db-ab12-4966a45b0218",
 								"exec": [
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -467,7 +467,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "57b516a7-8567-4eb7-9537-77b4df3a7179",
+								"id": "672a9426-3a0d-4bb1-b9e3-33c5f6a82f9a",
 								"exec": [
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -525,7 +525,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4b64f12c-7391-41b4-ab9c-d0e43a80b1f1",
+								"id": "8a494b69-10f6-4ee7-905a-025fe7d5ed85",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -574,7 +574,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "66a7bfef-f611-4ee9-bf2f-7a9c2667371c",
+								"id": "34a71fff-57e7-4d14-b902-8237be7d0c1a",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -626,7 +626,7 @@
 			"name": "2 Create Users",
 			"item": [
 				{
-					"name": "p14c-au-tam@mailinator.com",
+					"name": "Create default user",
 					"item": [
 						{
 							"name": "CREATE",
@@ -634,7 +634,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "11fb60aa-8b3f-49ae-b9ad-a5348667fe4b",
+										"id": "6ce19e57-ca54-409b-b0cc-4ca90a660f65",
 										"exec": [
 											"pm.test(\"Validate response status=201\", function () {",
 											"    pm.response.to.have.status(201);",
@@ -672,7 +672,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"p14c-au-tam@mailinator.com\",\n    \"name\": {\n        \"given\": \"Tam\",\n        \"family\": \"Tran\"\n    },\n    \"population\": {\n        \"id\": \"{{popID}}\"\n    },\n    \"username\": \"p14c-au-tam@mailinator.com\"\n}",
+									"raw": "{\n    \"email\": \"{{defaultEmail}}\",\n    \"name\": {\n        \"given\": \"Tam\",\n        \"family\": \"Tran\"\n    },\n    \"population\": {\n        \"id\": \"{{popID}}\"\n    },\n    \"username\": \"{{defaultUsername}}\"\n}",
 									"options": {
 										"raw": {}
 									}
@@ -697,7 +697,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "bf3a1362-64fe-4996-9360-744dcab56413",
+										"id": "d6bfed81-df30-4fa0-a41c-b668e3bbf09c",
 										"exec": [
 											""
 										],
@@ -752,7 +752,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7ff668d7-3402-4837-9d86-3a0db04686c7",
+										"id": "1e2f05d8-f02a-4709-96e9-d7343ce7658c",
 										"exec": [
 											""
 										],
@@ -807,7 +807,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "cd48159c-7a73-435c-8779-c7eac1e33187",
+										"id": "886b6e76-d4bf-4bb1-827d-888060998e4f",
 										"exec": [
 											""
 										],
@@ -862,7 +862,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "48789b00-76ef-4963-bc4c-e7836ad8ed20",
+										"id": "5b0e5770-7ecf-49e0-8441-e603ce21b5fd",
 										"exec": [
 											""
 										],
@@ -890,7 +890,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"type\": \"EMAIL\",\n    \"email\": \"p14c-au-tam@mailinator.com\"\n}",
+									"raw": "{\n    \"type\": \"EMAIL\",\n    \"email\": \"{{defaultEmail}}\"\n}",
 									"options": {
 										"raw": {}
 									}
@@ -921,7 +921,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "265f7c09-cb18-455e-8685-6bef7ee741d8",
+						"id": "57fe7a1a-3499-4085-8dd8-466097f5a5ae",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -931,7 +931,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "099baa8c-bc0e-4414-8af0-fa368a1a4082",
+						"id": "4d8c5a9b-59c7-4ae6-8887-629cc7a8b2b2",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -953,7 +953,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "301db7ce-eddc-43b2-a654-6276b3fed3ed",
+										"id": "009c5e93-f5f0-4085-9475-e3be3796793a",
 										"exec": [
 											"pm.test(\"Validate response status=201\", function () {",
 											"    pm.response.to.have.status(201);",
@@ -1016,7 +1016,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "740e6515-c061-4dad-b665-ce5feb7cd6b9",
+										"id": "b12d11e2-b783-4263-8d8f-ce6afb01613d",
 										"exec": [
 											"pm.test(\"Validate response status=200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -1085,7 +1085,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "931027e2-a6cb-4332-bd76-1b763c181cd6",
+										"id": "1f7202b3-d110-431c-a374-ed331ddb67cc",
 										"exec": [
 											""
 										],
@@ -1147,7 +1147,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "41a95cc5-db57-427e-8e33-201ae67e4fcf",
+										"id": "3deb1d53-4cd8-45fd-b94e-fb5987283061",
 										"exec": [
 											"pm.test(\"Validate response status=201\", function () {",
 											"    pm.response.to.have.status(201);",
@@ -1210,7 +1210,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d36f3393-e1b9-4303-92e7-61c01d80b009",
+										"id": "b22b085a-6477-431f-b603-23b2b02c5a3f",
 										"exec": [
 											"pm.test(\"Validate response status=200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -1279,7 +1279,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ed9e558d-dbe5-4e41-becd-d58cb6328347",
+										"id": "39c626fc-f815-40e4-bc76-40c692fb5fc9",
 										"exec": [
 											""
 										],
@@ -1334,7 +1334,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "1bbaee9c-8557-438e-bc08-49ea9eadd28f",
+										"id": "cc5add76-242f-4c21-9249-5301eec3b862",
 										"exec": [
 											""
 										],
@@ -1388,7 +1388,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "29b82493-7496-40e0-b27e-37c4d545d0b8",
+								"id": "7d6b9473-3bed-4c82-b793-d0585f74fe9a",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1398,7 +1398,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9d2c6e38-442b-4098-9654-ff6394f8cc1f",
+								"id": "06942bfe-d63a-448f-8c9d-caf72815d986",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1414,7 +1414,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e8426258-4e11-4ad0-82b4-fdf63a082a12",
+						"id": "9da17871-cf10-4d84-88cd-071f5f63ab16",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1424,7 +1424,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c26c50cb-054a-446e-b867-f9f6d6dc2f6a",
+						"id": "7c2df994-193f-4cf8-9b67-b5df6b11a282",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1481,7 +1481,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "6fce246e-5511-4fa4-9b7f-a89d56aaac86",
+				"id": "5840dc92-09e9-4f32-9cd1-492e9456387f",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1491,7 +1491,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "1fdd4f81-d0dc-470a-af42-19217c1eb4b2",
+				"id": "769d3db5-09e7-4566-80a6-64ee41bd1bf5",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1501,24 +1501,34 @@
 	],
 	"variable": [
 		{
-			"id": "f6016feb-7f3d-449a-ac6a-3d9db57701df",
+			"id": "11490123-e8ad-4df8-8e17-1f2179b25806",
 			"key": "apiPath",
 			"value": "https://api.pingone.com/v1"
 		},
 		{
-			"id": "1bfd229e-e839-4cde-a626-fcfdb21bac19",
+			"id": "0481f3f1-f882-466b-9659-3c8d4592a3b0",
 			"key": "parentEnvID",
 			"value": "parentEnvID"
 		},
 		{
-			"id": "f05f6007-3f6d-4ca1-bb24-276fda5d1ba9",
+			"id": "b4698aab-a4f4-48c1-89d3-4f826e471893",
 			"key": "adminAppID",
 			"value": "adminAppID"
 		},
 		{
-			"id": "f7f74408-d69e-49f9-98f7-348ebe202b71",
+			"id": "0ca6095d-3eaf-48f5-b5f6-88f05131b28a",
 			"key": "adminAppSecret",
 			"value": "adminAppSecret"
+		},
+		{
+			"id": "2dc2908e-5acb-4136-8213-bf1580b68b77",
+			"key": "defaultUsername",
+			"value": "p1mfauser"
+		},
+		{
+			"id": "15f6c2e4-7df1-45c2-8b0b-c4a46181bf05",
+			"key": "defaultEmail",
+			"value": "p1mfauser@mailinator.com"
 		}
 	],
 	"protocolProfileBehavior": {}
