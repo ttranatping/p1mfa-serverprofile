@@ -780,7 +780,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"currentPassword\":\"2Access!\",\n  \"newPassword\":\"2FederateM0re!\"\n}",
+									"raw": "{\n  \"currentPassword\":\"2Access!\",\n  \"newPassword\":\"{{defaultUserPassword}}\"\n}",
 									"options": {
 										"raw": {}
 									}
@@ -1457,7 +1457,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"environmentId\":\"{{envID}}\",\n\t\"populationId\":\"{{popID}}\",\n\t\"admin-url\":\"https://console.pingone.com/index.html?env={{envID}}\",\n\t\"applications\":[\n\t\t{\n\t\t\t\"workerapp-client_id\":\"{{appID-workerapp}}\",\n\t\t\t\"workerapp-client_secret\":\"{{appID-workerapp-secret}}\"\n\t\t},\n\t\t{\n\t\t\t\"enduser-client_id\":\"{{appID-appauth}}\",\n\t\t\t\"enduser-client_secret\":\"{{appID-appauth-secret}}\"\n\t\t}\n\t]\n}",
+					"raw": "{\n\t\"environmentId\":\"{{envID}}\",\n\t\"populationId\":\"{{popID}}\",\n    \"test-users\": [{\n        \"username\": \"{{defaultUsername}}\",\n        \"password\": \"{{defaultUserPassword}}\"\n    }],\n\t\"admin-url\":\"https://console.pingone.com/index.html?env={{envID}}\",\n\t\"applications\":[\n\t\t{\n\t\t\t\"workerapp-client_id\":\"{{appID-workerapp}}\",\n\t\t\t\"workerapp-client_secret\":\"{{appID-workerapp-secret}}\"\n\t\t},\n\t\t{\n\t\t\t\"enduser-client_id\":\"{{appID-appauth}}\",\n\t\t\t\"enduser-client_secret\":\"{{appID-appauth-secret}}\"\n\t\t}\n\t]\n}",
 					"options": {
 						"raw": {}
 					}
@@ -1501,34 +1501,39 @@
 	],
 	"variable": [
 		{
-			"id": "11490123-e8ad-4df8-8e17-1f2179b25806",
+			"id": "bf6ba797-137d-4842-8a21-cf53e5513822",
 			"key": "apiPath",
 			"value": "https://api.pingone.com/v1"
 		},
 		{
-			"id": "0481f3f1-f882-466b-9659-3c8d4592a3b0",
+			"id": "c5d3f02b-592f-4d29-acdf-639b58c39c44",
 			"key": "parentEnvID",
 			"value": "parentEnvID"
 		},
 		{
-			"id": "b4698aab-a4f4-48c1-89d3-4f826e471893",
+			"id": "ed8da02b-3ff5-40b4-bbe4-593735f69ebd",
 			"key": "adminAppID",
 			"value": "adminAppID"
 		},
 		{
-			"id": "0ca6095d-3eaf-48f5-b5f6-88f05131b28a",
+			"id": "ebc27ea0-896f-4f1e-b5a7-d9bbfcb7d2ed",
 			"key": "adminAppSecret",
 			"value": "adminAppSecret"
 		},
 		{
-			"id": "2dc2908e-5acb-4136-8213-bf1580b68b77",
+			"id": "97d64446-064e-4d12-bf54-54a9ecd277b3",
 			"key": "defaultUsername",
 			"value": "p1mfauser"
 		},
 		{
-			"id": "15f6c2e4-7df1-45c2-8b0b-c4a46181bf05",
+			"id": "cf50c293-42fe-4973-8bcd-7081b1c0869b",
 			"key": "defaultEmail",
 			"value": "p1mfauser@mailinator.com"
+		},
+		{
+			"id": "542f7623-4b55-472d-b167-58d18bbb2318",
+			"key": "defaultUserPassword",
+			"value": "2FederateM0re!"
 		}
 	],
 	"protocolProfileBehavior": {}
