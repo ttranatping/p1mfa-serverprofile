@@ -1553,7 +1553,7 @@
                           "type": "ADAPTER",
                           "id": "htmlFormAdapter"
                         },
-                        "value": "id"
+                        "value": "username"
                       }
                     },
                     "children": [
