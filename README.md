@@ -9,7 +9,7 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
 A postman collection is provided to help you get you set up quickly. 
 
 1. Import the [postman collection](postman_setup_p1mfa.json) into Postman.
-2. Configure the collection variables (right click collection and edit it).
+2. Configure the collection variables (right click collection and select Edit).
     - Set the parent environment settings:
       - parentEnvID
       - adminAppID (worker app configured in your parent environment)
