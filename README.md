@@ -61,3 +61,7 @@ Alternatively you can run the following manual steps:
 5. Start the sample OAuth2 flow: 
     - https://localhost:9031/as/authorization.oauth2?client_id=sampleclient&response_type=token
 6. Log in with a P14C user that has MFA enabled.
+    - if you set up P14C/P1MFA using Postman:
+      - the default user is: p1mfauser/2FederateM0re!
+      - the default email is: p1mfauser@mailinator.com (so check the OTP at mailinator.com).
+    
