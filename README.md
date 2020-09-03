@@ -22,6 +22,7 @@ A postman collection is provided to help you get you set up quickly.
     - workerapp-client_secret -> P14C_WORKER_CLIENTSECRET
     - enduser-client_id -> P14C_ENDUSER_CLIENTID
     - enduser-client_secret -> P14C_ENDUSER_CLIENTSECRET
+    - Note down the test users (default: p1mfauser/2FederateM0re!)
 
 ### Option 2 - Manually create P1MFA/P14C environment
 
@@ -60,3 +61,7 @@ Alternatively you can run the following manual steps:
 5. Start the sample OAuth2 flow: 
     - https://localhost:9031/as/authorization.oauth2?client_id=sampleclient&response_type=token
 6. Log in with a P14C user that has MFA enabled.
+    - if you set up P14C/P1MFA using Postman:
+      - the default user is: p1mfauser/2FederateM0re!
+      - the default email is: p1mfauser@mailinator.com (so check the OTP at mailinator.com).
+    
