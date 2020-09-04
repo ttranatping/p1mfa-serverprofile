@@ -1,7 +1,9 @@
 # Android FCM Push Notification Setup
 
 ## Pre-requisites
-- You have set up P1MFA manually or via Postman scripts. See [here](README.md) for more details.
+- PingFederate and P1MFA/P14C is set up and configured.
+    - Ideally you have email/sms OTP working.
+    - This can be performed manually or via Postman scripts and Docker. See [here](README.md) for more details.
 - A Google account.
 - Android Studio set up with the [P1MFA Mobile App](https://github.com/pingidentity/pingone-customers-mobile-sdk-android) loaded and ready.
 
