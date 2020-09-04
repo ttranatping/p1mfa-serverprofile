@@ -48,7 +48,7 @@
     - Click menu: Tools -> AVD Manager
     - Add a new Virtual Device (e.g. Pixel 3)
     - When asked, select API Level 29 or greater.
-7. In some dev environments, Android Studio may not let you configure RAM settings appropriately. E.g. changing a value does take effect.
+7. In some dev environments, Android Studio may not let you configure RAM settings appropriately. E.g. changing a value for RAM does not take effect.
     - You may need to edit config.ini on disk. See this [stackoverflow thread](https://stackoverflow.com/questions/49454328/android-emulator-ram-not-extending-for-google-play-api-27) for instructions.
     - You may wish to increase this value to something more representative of the device e.g. 4096.
 8. Run the application by clicking menu: Run -> Run 'app'.
