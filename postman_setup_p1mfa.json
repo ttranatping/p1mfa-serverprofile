@@ -472,7 +472,14 @@
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
 									"});",
-									""
+									"pm.test(\"Validate id property exists\", function () {",
+									"    var response = pm.response.json();",
+									"    pm.expect(response).to.have.property('id');",
+									"});",
+									"pm.test(\"Set environment variables for next test\", function () {",
+									"    var response = pm.response.json();",
+									"    pm.environment.set(\"signonPolicyActionID\", response.id);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1768,6 +1775,62 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Configure Signon Action to include Push",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "052bcea5-abab-4a21-9b15-25e759e40c18",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"type\": \"MULTI_FACTOR_AUTHENTICATION\",\n    \"priority\": 1,\n    \"sms\": {\n        \"enabled\": true\n    },\n    \"boundBiometrics\": {\n        \"enabled\": false\n    },\n    \"securityKey\": {\n        \"enabled\": false\n    },\n    \"email\": {\n        \"enabled\": true\n    },\n    \"applications\": [\n        {\n            \"id\": \"{{appID-appauth}}\",\n            \"autoEnrollment\": {\n                \"enabled\": true\n            },\n            \"deviceAuthorization\": {\n                \"enabled\": true\n            }\n        }\n    ]\n}",
+											"options": {
+												"raw": {}
+											}
+										},
+										"url": {
+											"raw": "{{apiPath}}/environments/{{envID}}/signOnPolicies/{{signonPolicyID}}/actions/{{signonPolicyActionID}}",
+											"host": [
+												"{{apiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"signOnPolicies",
+												"{{signonPolicyID}}",
+												"actions",
+												"{{signonPolicyActionID}}"
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"protocolProfileBehavior": {},
@@ -1825,7 +1888,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Get Environment Details",
+			"name": "Get Environment Details - Don't run outside POC/Demo",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -1891,52 +1954,52 @@
 	],
 	"variable": [
 		{
-			"id": "eddb42da-7df9-4841-8b33-089c7a0c574a",
+			"id": "4bed8fe4-ac12-4a95-8d1a-2d63452aa4b2",
 			"key": "apiPath",
 			"value": "https://api.pingone.com/v1"
 		},
 		{
-			"id": "8c72c5e0-2517-46f3-b460-574e413f9d81",
+			"id": "09caee24-1dee-47af-91fc-64397ca87b1d",
 			"key": "parentEnvID",
 			"value": "parentEnvID"
 		},
 		{
-			"id": "ac2acc04-dca2-49b1-a607-cbabcaca7c20",
+			"id": "90192f8e-6150-412d-b824-73975c64c6ce",
 			"key": "adminAppID",
 			"value": "adminAppID"
 		},
 		{
-			"id": "bac66648-9a8b-4ee6-8d08-0b0a81844c8a",
+			"id": "7f5c6a9f-eab6-4b6a-9671-d3edcde2a1ea",
 			"key": "adminAppSecret",
 			"value": "adminAppSecret"
 		},
 		{
-			"id": "ce80d736-089a-4fa4-9282-756d0ab9a42e",
+			"id": "7552217d-6f99-48ff-bc61-5a4c594640f2",
 			"key": "defaultUsername",
 			"value": "p1mfauser"
 		},
 		{
-			"id": "6c718f05-a757-4b81-905f-23d2029e9e09",
+			"id": "db0e5746-1bd2-434e-91bd-99a812e05087",
 			"key": "defaultEmail",
 			"value": "p1mfauser@mailinator.com"
 		},
 		{
-			"id": "3593f006-0fba-48d8-b2e9-19676615e5a2",
+			"id": "52e73157-9e87-4be4-b0fa-d92fea7ae955",
 			"key": "defaultUserPassword",
 			"value": "2FederateM0re!"
 		},
 		{
-			"id": "d882691c-51f7-40f6-858e-811f5f015dae",
+			"id": "76a25284-f45a-4525-9d1b-71541494acf9",
 			"key": "androidFCMPackageName",
 			"value": "com.android.example.app"
 		},
 		{
-			"id": "b262a275-8b02-4c73-841d-0fc8fb78935f",
+			"id": "2721fe13-990a-4ad9-afb8-094a6ee06c97",
 			"key": "androidFCMServerKey",
 			"value": "<See Cloud Messaging Settings>"
 		},
 		{
-			"id": "cd68f601-b2ed-4ca0-b745-719daa31e161",
+			"id": "e337ecce-4083-4453-9c24-2895394f095e",
 			"key": "licenseType",
 			"value": "MFA"
 		}
