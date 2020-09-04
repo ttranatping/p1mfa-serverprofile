@@ -177,7 +177,7 @@
 									"pm.test(\"Set environment variables for next test\", function () {",
 									"    var response = pm.response.json();",
 									"    const licenseObject = response._embedded.licenses.find",
-									"      (m => m.package === \"{{licenseType}}\");",
+									"      (m => m.package === pm.collectionVariables.get(\"licenseType\"));",
 									"    pm.environment.set(\"licenseID\", licenseObject.id);",
 									"});"
 								],
@@ -1362,299 +1362,362 @@
 					"name": "PF Adapter EndUser",
 					"item": [
 						{
-							"name": "Enable Android Push Notifications",
-							"item": [],
+							"name": "Create Application",
+							"item": [
+								{
+									"name": "CREATE Application (OIDC)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3deb1d53-4cd8-45fd-b94e-fb5987283061",
+												"exec": [
+													"pm.test(\"Validate response status=201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"});",
+													"pm.test(\"Validate id property exists\", function () {",
+													"    var response = pm.response.json();",
+													"    pm.expect(response).to.have.property('id');",
+													"});",
+													"pm.test(\"Set environment variables for next test\", function () {",
+													"    var response = pm.response.json();",
+													"    pm.environment.set(\"appID-appauth\", response.id);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"PingFederate Adapter - EndUserApp\",\n  \"enabled\": true,\n  \"type\": \"NATIVE_APP\",\n  \"protocol\": \"OPENID_CONNECT\",\n  \"responseTypes\": [\n    \"ID_TOKEN\",\n    \"TOKEN\"\n  ],\n  \"grantTypes\": [\n    \"IMPLICIT\"\n  ],\n  \"refreshTokenDuration\": 2592000,\n  \"tokenEndpointAuthMethod\": \"CLIENT_SECRET_POST\",\n  \"pkceEnforcement\": \"OPTIONAL\",\n  \"refreshTokenRollingDuration\": 15552000,\n  \"redirectUris\": [\n  ]\n}",
+											"options": {
+												"raw": {}
+											}
+										},
+										"url": {
+											"raw": "{{apiPath}}/environments/{{envID}}/applications",
+											"host": [
+												"{{apiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "UPDATE Application Secret",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b22b085a-6477-431f-b603-23b2b02c5a3f",
+												"exec": [
+													"pm.test(\"Validate response status=200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Validate secret property exists\", function () {",
+													"    var response = pm.response.json();",
+													"    pm.expect(response).to.have.property('secret');",
+													"});",
+													"pm.test(\"Set environment variables for next test\", function () {",
+													"    var response = pm.response.json();",
+													"    pm.environment.set(\"appID-appauth-secret\", response.secret);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{accessToken}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {}
+											}
+										},
+										"url": {
+											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/secret",
+											"host": [
+												"{{apiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications",
+												"{{appID-appauth}}",
+												"secret"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Assign MFA Policy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "39c626fc-f815-40e4-bc76-40c692fb5fc9",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"priority\": 1,\n    \"signOnPolicy\": {\n    \t\"id\": \"{{signonPolicyID}}\"\n    }\n}",
+											"options": {
+												"raw": {}
+											}
+										},
+										"url": {
+											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/signOnPolicyAssignments",
+											"host": [
+												"{{apiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications",
+												"{{appID-appauth}}",
+												"signOnPolicyAssignments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Assign Profile Scope",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "cc5add76-242f-4c21-9249-5301eec3b862",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"resource\": {\n        \"id\": \"{{resourceID-openid}}\"\n    },\n    \"scopes\": [\n        {\n        \t\"id\": \"{{scopeID-profile}}\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {}
+											}
+										},
+										"url": {
+											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/grants",
+											"host": [
+												"{{apiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications",
+												"{{appID-appauth}}",
+												"grants"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Read Application Details",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "04aee569-006f-4027-80dc-de5a14d776c1",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}",
+											"host": [
+												"{{apiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications",
+												"{{appID-appauth}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
 						},
 						{
-							"name": "CREATE Application (OIDC)",
-							"event": [
+							"name": "Enable Android Push Notifications",
+							"item": [
 								{
-									"listen": "test",
-									"script": {
-										"id": "3deb1d53-4cd8-45fd-b94e-fb5987283061",
-										"exec": [
-											"pm.test(\"Validate response status=201\", function () {",
-											"    pm.response.to.have.status(201);",
-											"});",
-											"pm.test(\"Validate id property exists\", function () {",
-											"    var response = pm.response.json();",
-											"    pm.expect(response).to.have.property('id');",
-											"});",
-											"pm.test(\"Set environment variables for next test\", function () {",
-											"    var response = pm.response.json();",
-											"    pm.environment.set(\"appID-appauth\", response.id);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
+									"name": "Configure FCM Push",
+									"event": [
 										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
+											"listen": "test",
+											"script": {
+												"id": "3936c1f5-db2e-4dff-98e1-86da0e430dad",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
 										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"name\": \"PingFederate Adapter - EndUserApp\",\n  \"enabled\": true,\n  \"type\": \"NATIVE_APP\",\n  \"protocol\": \"OPENID_CONNECT\",\n  \"responseTypes\": [\n    \"ID_TOKEN\",\n    \"TOKEN\"\n  ],\n  \"grantTypes\": [\n    \"IMPLICIT\"\n  ],\n  \"refreshTokenDuration\": 2592000,\n  \"tokenEndpointAuthMethod\": \"CLIENT_SECRET_POST\",\n  \"pkceEnforcement\": \"OPTIONAL\",\n  \"refreshTokenRollingDuration\": 15552000,\n  \"redirectUris\": [\n  ]\n}",
-									"options": {
-										"raw": {}
-									}
-								},
-								"url": {
-									"raw": "{{apiPath}}/environments/{{envID}}/applications",
-									"host": [
-										"{{apiPath}}"
 									],
-									"path": [
-										"environments",
-										"{{envID}}",
-										"applications"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "UPDATE Application Secret",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "b22b085a-6477-431f-b603-23b2b02c5a3f",
-										"exec": [
-											"pm.test(\"Validate response status=200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"pm.test(\"Validate secret property exists\", function () {",
-											"    var response = pm.response.json();",
-											"    pm.expect(response).to.have.property('secret');",
-											"});",
-											"pm.test(\"Set environment variables for next test\", function () {",
-											"    var response = pm.response.json();",
-											"    pm.environment.set(\"appID-appauth-secret\", response.secret);",
-											"});"
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
 										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"type\": \"FCM\",\n  \"key\": \"xxx\"\n}",
+											"options": {
+												"raw": {}
+											}
+										},
+										"url": {
+											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/pushCredentials",
+											"host": [
+												"{{apiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications",
+												"{{appID-appauth}}",
+												"pushCredentials"
+											]
 										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
 									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{accessToken}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {}
-									}
-								},
-								"url": {
-									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/secret",
-									"host": [
-										"{{apiPath}}"
-									],
-									"path": [
-										"environments",
-										"{{envID}}",
-										"applications",
-										"{{appID-appauth}}",
-										"secret"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Assign MFA Policy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "39c626fc-f815-40e4-bc76-40c692fb5fc9",
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
+									"response": []
 								}
 							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"priority\": 1,\n    \"signOnPolicy\": {\n    \t\"id\": \"{{signonPolicyID}}\"\n    }\n}",
-									"options": {
-										"raw": {}
-									}
-								},
-								"url": {
-									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/signOnPolicyAssignments",
-									"host": [
-										"{{apiPath}}"
-									],
-									"path": [
-										"environments",
-										"{{envID}}",
-										"applications",
-										"{{appID-appauth}}",
-										"signOnPolicyAssignments"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Assign Profile Scope",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "cc5add76-242f-4c21-9249-5301eec3b862",
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"resource\": {\n        \"id\": \"{{resourceID-openid}}\"\n    },\n    \"scopes\": [\n        {\n        \t\"id\": \"{{scopeID-profile}}\"\n        }\n    ]\n}",
-									"options": {
-										"raw": {}
-									}
-								},
-								"url": {
-									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/grants",
-									"host": [
-										"{{apiPath}}"
-									],
-									"path": [
-										"environments",
-										"{{envID}}",
-										"applications",
-										"{{appID-appauth}}",
-										"grants"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Read Application Details",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "04aee569-006f-4027-80dc-de5a14d776c1",
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}",
-									"host": [
-										"{{apiPath}}"
-									],
-									"path": [
-										"environments",
-										"{{envID}}",
-										"applications",
-										"{{appID-appauth}}"
-									]
-								}
-							},
-							"response": []
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
 						}
 					],
 					"event": [
@@ -1774,52 +1837,52 @@
 	],
 	"variable": [
 		{
-			"id": "d84f059a-ad67-41ff-adcf-d13bc4bd2a37",
+			"id": "4fef866f-2cf2-4bcb-b306-3c3865e33ce8",
 			"key": "apiPath",
 			"value": "https://api.pingone.com/v1"
 		},
 		{
-			"id": "7644108c-577d-41fc-a408-1ed90bc905fa",
+			"id": "7626d704-d456-4ca4-9a06-a97d1f593a7c",
 			"key": "parentEnvID",
 			"value": "parentEnvID"
 		},
 		{
-			"id": "66286a0a-d028-465d-8ffe-93ea89a6e838",
+			"id": "cfd069b9-1212-4a2f-8ca4-c5368c99fa01",
 			"key": "adminAppID",
 			"value": "adminAppID"
 		},
 		{
-			"id": "172ad7cf-09d3-4e13-abe3-ec608e939a7d",
+			"id": "6232cb40-f059-4fe0-a9df-bc990278a5ef",
 			"key": "adminAppSecret",
 			"value": "adminAppSecret"
 		},
 		{
-			"id": "99bd5292-286f-4c26-9162-81211177ed0a",
+			"id": "cd47f262-a662-4df8-9a2f-5290081b7ef0",
 			"key": "defaultUsername",
 			"value": "p1mfauser"
 		},
 		{
-			"id": "a7910de2-65df-41d1-97e2-f205660f8d7a",
+			"id": "95a608a1-12cd-4c83-b4ce-eefa27b32bd1",
 			"key": "defaultEmail",
 			"value": "p1mfauser@mailinator.com"
 		},
 		{
-			"id": "4f3b766d-d971-43f1-8fc0-0e491c0f4eef",
+			"id": "3e0bf1fa-0824-4907-80b4-bc33fb1b8270",
 			"key": "defaultUserPassword",
 			"value": "2FederateM0re!"
 		},
 		{
-			"id": "5f913f19-af59-4830-9f87-d23dab7b6831",
+			"id": "13237627-3bf0-4de5-a522-4b66a4c7bea5",
 			"key": "androidFCMPackageName",
 			"value": "com.android.example.app"
 		},
 		{
-			"id": "98f04260-1925-40fa-88d0-edcda9ea5f32",
+			"id": "57efda48-b5cd-4639-83c5-dde3cba12a9c",
 			"key": "androidFCMServerKey",
 			"value": "<See Cloud Messaging Settings>"
 		},
 		{
-			"id": "3b20d31c-f604-467f-9692-d0d28218177f",
+			"id": "82d95b48-941f-4910-98bb-cd8d5d67b3bb",
 			"key": "licenseType",
 			"value": "MFA"
 		}
