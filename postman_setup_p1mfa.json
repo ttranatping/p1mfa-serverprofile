@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "0 Premade demo details",
+			"name": "0 Initialise base variables",
 			"item": [
 				{
 					"name": "Token Admin App (client_credentials)",
@@ -267,6 +267,28 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8fe9342e-6cc3-448d-afe0-bd81c2bd880c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "20bee71d-346b-4b56-a5d6-83efec7728d2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1950,52 +1972,52 @@
 	],
 	"variable": [
 		{
-			"id": "92a78e41-60e5-4233-a13b-d00107da2cf7",
+			"id": "281c76d2-4099-460c-8cae-f1be975cb01f",
 			"key": "apiPath",
 			"value": "https://api.pingone.com/v1"
 		},
 		{
-			"id": "7168c15a-d266-4096-919f-cbd2484aae88",
+			"id": "3857289c-947e-4628-8e79-bf169831e19b",
 			"key": "parentEnvID",
 			"value": "parentEnvID"
 		},
 		{
-			"id": "3ff3b920-56b3-4f33-ac7c-bfbc759cf2ea",
+			"id": "c0cc9a0d-8379-4dd4-a1f2-fcc4168c8649",
 			"key": "adminAppID",
 			"value": "adminAppID"
 		},
 		{
-			"id": "1083d331-68b8-4312-a51d-8e6a0df74d74",
+			"id": "290eabd5-fb70-4ad7-b12d-1e737268a64e",
 			"key": "adminAppSecret",
 			"value": "adminAppSecret"
 		},
 		{
-			"id": "ad96b926-f453-4e02-8559-4036761c9d19",
+			"id": "4930bc4f-1477-42ec-b3da-75642b0158a7",
 			"key": "defaultUsername",
 			"value": "p1mfauser"
 		},
 		{
-			"id": "ea220e91-c5b0-4c53-8b00-ce104efdc480",
+			"id": "073fdd10-bbff-4b58-9529-333fc2ada608",
 			"key": "defaultEmail",
 			"value": "p1mfauser@mailinator.com"
 		},
 		{
-			"id": "1273fe37-6245-4035-a057-8a6c16d792b4",
+			"id": "08ea4023-db95-413e-8e7e-e9fcdbcbc611",
 			"key": "defaultUserPassword",
 			"value": "2FederateM0re!"
 		},
 		{
-			"id": "dbec8409-2d7c-424a-9dc9-7c905cf41520",
+			"id": "094684af-2ae4-4634-bf55-d3b154c1e8d1",
 			"key": "androidFCMPackageName",
 			"value": "com.android.example.app"
 		},
 		{
-			"id": "f5219631-596d-480b-998b-29307aff7177",
+			"id": "eae87104-35a9-42c1-b064-7a30e6971a32",
 			"key": "androidFCMServerKey",
 			"value": "<See Cloud Messaging Settings>"
 		},
 		{
-			"id": "4ce5cf7f-3d81-461e-b6a9-2ae375a7dbd8",
+			"id": "28a02ee9-6264-44b6-9986-52e27a10747a",
 			"key": "licenseType",
 			"value": "MFA"
 		}
