@@ -1661,6 +1661,60 @@
 							"name": "Enable Android Push Notifications",
 							"item": [
 								{
+									"name": "Configure Package Name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "56704da2-0e6f-4367-853a-9dd1109c290f",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{accessToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"packageName\": \"{{androidFCMPackageName}}\",\n    \"name\": \"PingFederate Adapter - EndUserApp\",\n    \"enabled\": true,\n    \"type\": \"NATIVE_APP\",\n    \"protocol\": \"OPENID_CONNECT\",\n    \"createdAt\": \"2020-09-04T00:40:34.398Z\",\n    \"updatedAt\": \"2020-09-04T00:40:34.398Z\",\n    \"responseTypes\": [\n        \"ID_TOKEN\",\n        \"TOKEN\"\n    ],\n    \"grantTypes\": [\n        \"IMPLICIT\"\n    ],\n    \"refreshTokenDuration\": 2592000,\n    \"tokenEndpointAuthMethod\": \"CLIENT_SECRET_POST\",\n    \"pkceEnforcement\": \"OPTIONAL\",\n    \"refreshTokenRollingDuration\": 15552000,\n    \"redirectUris\": []\n}",
+											"options": {
+												"raw": {}
+											}
+										},
+										"url": {
+											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}",
+											"host": [
+												"{{apiPath}}"
+											],
+											"path": [
+												"environments",
+												"{{envID}}",
+												"applications",
+												"{{appID-appauth}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Configure FCM Push",
 									"event": [
 										{
@@ -1694,7 +1748,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"type\": \"FCM\",\n  \"key\": \"xxx\"\n}",
+											"raw": "{\n  \"type\": \"FCM\",\n  \"key\": \"{{androidFCMServerKey}}\"\n}",
 											"options": {
 												"raw": {}
 											}
@@ -1793,7 +1847,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"environmentId\":\"{{envID}}\",\n\t\"populationId\":\"{{popID}}\",\n    \"test-users\": [{\n        \"username\": \"{{defaultUsername}}\",\n        \"password\": \"{{defaultUserPassword}}\"\n    }],\n\t\"admin-url\":\"https://console.pingone.com/index.html?env={{envID}}\",\n\t\"applications\":[\n\t\t{\n\t\t\t\"workerapp-client_id\":\"{{appID-workerapp}}\",\n\t\t\t\"workerapp-client_secret\":\"{{appID-workerapp-secret}}\"\n\t\t},\n\t\t{\n\t\t\t\"enduser-client_id\":\"{{appID-appauth}}\",\n\t\t\t\"enduser-client_secret\":\"{{appID-appauth-secret}}\"\n\t\t}\n\t]\n}",
+					"raw": "{\n\t\"environmentId\":\"{{envID}}\",\n\t\"populationId\":\"{{popID}}\",\n    \"androidFCMPackageName\": \"{{androidFCMPackageName}}\",\n    \"test-users\": [{\n        \"username\": \"{{defaultUsername}}\",\n        \"password\": \"{{defaultUserPassword}}\"\n    }],\n\t\"admin-url\":\"https://console.pingone.com/index.html?env={{envID}}\",\n\t\"applications\":[\n\t\t{\n\t\t\t\"workerapp-client_id\":\"{{appID-workerapp}}\",\n\t\t\t\"workerapp-client_secret\":\"{{appID-workerapp-secret}}\"\n\t\t},\n\t\t{\n\t\t\t\"enduser-client_id\":\"{{appID-appauth}}\",\n\t\t\t\"enduser-client_secret\":\"{{appID-appauth-secret}}\"\n\t\t}\n\t]\n}",
 					"options": {
 						"raw": {}
 					}
@@ -1837,52 +1891,52 @@
 	],
 	"variable": [
 		{
-			"id": "4fef866f-2cf2-4bcb-b306-3c3865e33ce8",
+			"id": "eddb42da-7df9-4841-8b33-089c7a0c574a",
 			"key": "apiPath",
 			"value": "https://api.pingone.com/v1"
 		},
 		{
-			"id": "7626d704-d456-4ca4-9a06-a97d1f593a7c",
+			"id": "8c72c5e0-2517-46f3-b460-574e413f9d81",
 			"key": "parentEnvID",
 			"value": "parentEnvID"
 		},
 		{
-			"id": "cfd069b9-1212-4a2f-8ca4-c5368c99fa01",
+			"id": "ac2acc04-dca2-49b1-a607-cbabcaca7c20",
 			"key": "adminAppID",
 			"value": "adminAppID"
 		},
 		{
-			"id": "6232cb40-f059-4fe0-a9df-bc990278a5ef",
+			"id": "bac66648-9a8b-4ee6-8d08-0b0a81844c8a",
 			"key": "adminAppSecret",
 			"value": "adminAppSecret"
 		},
 		{
-			"id": "cd47f262-a662-4df8-9a2f-5290081b7ef0",
+			"id": "ce80d736-089a-4fa4-9282-756d0ab9a42e",
 			"key": "defaultUsername",
 			"value": "p1mfauser"
 		},
 		{
-			"id": "95a608a1-12cd-4c83-b4ce-eefa27b32bd1",
+			"id": "6c718f05-a757-4b81-905f-23d2029e9e09",
 			"key": "defaultEmail",
 			"value": "p1mfauser@mailinator.com"
 		},
 		{
-			"id": "3e0bf1fa-0824-4907-80b4-bc33fb1b8270",
+			"id": "3593f006-0fba-48d8-b2e9-19676615e5a2",
 			"key": "defaultUserPassword",
 			"value": "2FederateM0re!"
 		},
 		{
-			"id": "13237627-3bf0-4de5-a522-4b66a4c7bea5",
+			"id": "d882691c-51f7-40f6-858e-811f5f015dae",
 			"key": "androidFCMPackageName",
 			"value": "com.android.example.app"
 		},
 		{
-			"id": "57efda48-b5cd-4639-83c5-dde3cba12a9c",
+			"id": "b262a275-8b02-4c73-841d-0fc8fb78935f",
 			"key": "androidFCMServerKey",
 			"value": "<See Cloud Messaging Settings>"
 		},
 		{
-			"id": "82d95b48-941f-4910-98bb-cd8d5d67b3bb",
+			"id": "cd68f601-b2ed-4ca0-b745-719daa31e161",
 			"key": "licenseType",
 			"value": "MFA"
 		}
