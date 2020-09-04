@@ -177,7 +177,7 @@
 									"pm.test(\"Set environment variables for next test\", function () {",
 									"    var response = pm.response.json();",
 									"    const licenseObject = response._embedded.licenses.find",
-									"      (m => m.package === \"MFA\");",
+									"      (m => m.package === \"{{licenseType}}\");",
 									"    pm.environment.set(\"licenseID\", licenseObject.id);",
 									"});"
 								],
@@ -915,6 +915,179 @@
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Pair mobile",
+					"item": [
+						{
+							"name": "Create Pairing Key",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c373748b-5122-4fb3-bb24-e017565797b7",
+										"exec": [
+											"pm.test(\"Validate response status=201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"pm.test(\"Validate id property exists\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.expect(response).to.have.property('id');",
+											"});",
+											"pm.test(\"Set environment variables for next test\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.environment.set(\"pairingID\", response.id);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJraWQiOiJkZWZhdWx0IiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJodHRwczpcL1wvYXBpLnBpbmdvbmUuY29tIiwib3JnIjoiOWMyOWQ4YWYtYjViNC00OTA2LWI0YzctMjdmMmFhZGQxNDE0IiwiaXNzIjoiaHR0cHM6XC9cL2F1dGgucGluZ29uZS5jb21cLzllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YlwvYXMiLCJleHAiOjE1OTkxNzUzMDUsImVudiI6IjllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YiIsImlhdCI6MTU5OTE3MTcwNSwiY2xpZW50X2lkIjoiNmQ5OTU5MjMtZGIyMy00ZDhhLTk3YzktNjk3MDA3YjE2NjE2In0.OpKdY44OqFk5uVHQpi0tL4MYGJXLPal_IYtXKNGr1UIJ2Am6jSrjTH38j-p8DCXDRyugMu6cAiZbMsz9RYAw-pGU4-3wxtV_QaNnWti01QH5jCeExtkKg8Enr2Hbl0QTLddAqewyS-hjvF_ukOp3-Qx6XqXWISG6tncP6TO8YYYOAsHIGf29Rn5YlqoA81UR6WyFi1lo63F5Xldiqz1GRS-zR83_tpEoRfe-Ef8phacqhydaNnrHGoYo8UMv_o1FGqOxWEBiine3WQlkEjS_Y-kMqFCGgn2QVh2llbRhqmNh0N9uBblAgBmPbOJcGYx7eumNVDTkcRbemtlafEXSUQ"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"applications\": [\n    { \n      \"id\": \"{{appID-appauth}}\" \n    }\n  ]\n}"
+								},
+								"url": {
+									"raw": "https://api.pingone.com/v1/environments/{{envID}}/users/{{userID-1}}/pairingKeys",
+									"protocol": "https",
+									"host": [
+										"api",
+										"pingone",
+										"com"
+									],
+									"path": [
+										"v1",
+										"environments",
+										"{{envID}}",
+										"users",
+										"{{userID-1}}",
+										"pairingKeys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Pairing Key Status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJraWQiOiJkZWZhdWx0IiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJodHRwczpcL1wvYXBpLnBpbmdvbmUuY29tIiwib3JnIjoiOWMyOWQ4YWYtYjViNC00OTA2LWI0YzctMjdmMmFhZGQxNDE0IiwiaXNzIjoiaHR0cHM6XC9cL2F1dGgucGluZ29uZS5jb21cLzllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YlwvYXMiLCJleHAiOjE1OTkxNzUzMDUsImVudiI6IjllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YiIsImlhdCI6MTU5OTE3MTcwNSwiY2xpZW50X2lkIjoiNmQ5OTU5MjMtZGIyMy00ZDhhLTk3YzktNjk3MDA3YjE2NjE2In0.OpKdY44OqFk5uVHQpi0tL4MYGJXLPal_IYtXKNGr1UIJ2Am6jSrjTH38j-p8DCXDRyugMu6cAiZbMsz9RYAw-pGU4-3wxtV_QaNnWti01QH5jCeExtkKg8Enr2Hbl0QTLddAqewyS-hjvF_ukOp3-Qx6XqXWISG6tncP6TO8YYYOAsHIGf29Rn5YlqoA81UR6WyFi1lo63F5Xldiqz1GRS-zR83_tpEoRfe-Ef8phacqhydaNnrHGoYo8UMv_o1FGqOxWEBiine3WQlkEjS_Y-kMqFCGgn2QVh2llbRhqmNh0N9uBblAgBmPbOJcGYx7eumNVDTkcRbemtlafEXSUQ"
+									}
+								],
+								"url": {
+									"raw": "https://api.pingone.com/v1/environments/{{envID}}/users/{{userID-1}}/pairingKeys/{{pairingID}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"pingone",
+										"com"
+									],
+									"path": [
+										"v1",
+										"environments",
+										"{{envID}}",
+										"users",
+										"{{userID-1}}",
+										"pairingKeys",
+										"{{pairingID}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get User Devices",
+					"item": [
+						{
+							"name": "Get user devices",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJraWQiOiJkZWZhdWx0IiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJodHRwczpcL1wvYXBpLnBpbmdvbmUuY29tIiwib3JnIjoiOWMyOWQ4YWYtYjViNC00OTA2LWI0YzctMjdmMmFhZGQxNDE0IiwiaXNzIjoiaHR0cHM6XC9cL2F1dGgucGluZ29uZS5jb21cLzllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YlwvYXMiLCJleHAiOjE1OTkxNzUzMDUsImVudiI6IjllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YiIsImlhdCI6MTU5OTE3MTcwNSwiY2xpZW50X2lkIjoiNmQ5OTU5MjMtZGIyMy00ZDhhLTk3YzktNjk3MDA3YjE2NjE2In0.OpKdY44OqFk5uVHQpi0tL4MYGJXLPal_IYtXKNGr1UIJ2Am6jSrjTH38j-p8DCXDRyugMu6cAiZbMsz9RYAw-pGU4-3wxtV_QaNnWti01QH5jCeExtkKg8Enr2Hbl0QTLddAqewyS-hjvF_ukOp3-Qx6XqXWISG6tncP6TO8YYYOAsHIGf29Rn5YlqoA81UR6WyFi1lo63F5Xldiqz1GRS-zR83_tpEoRfe-Ef8phacqhydaNnrHGoYo8UMv_o1FGqOxWEBiine3WQlkEjS_Y-kMqFCGgn2QVh2llbRhqmNh0N9uBblAgBmPbOJcGYx7eumNVDTkcRbemtlafEXSUQ"
+									}
+								],
+								"url": {
+									"raw": "https://api.pingone.com/v1/environments/{{envID}}/users/{{userID-1}}/devices",
+									"protocol": "https",
+									"host": [
+										"api",
+										"pingone",
+										"com"
+									],
+									"path": [
+										"v1",
+										"environments",
+										"{{envID}}",
+										"users",
+										"{{userID-1}}",
+										"devices"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"event": [
@@ -1133,6 +1306,53 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Read Application Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "16c231f1-7fa7-48e9-b7a9-838af7feb598",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-workerapp}}",
+									"host": [
+										"{{apiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"applications",
+										"{{appID-workerapp}}"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -1141,6 +1361,12 @@
 				{
 					"name": "PF Adapter EndUser",
 					"item": [
+						{
+							"name": "Enable Android Push Notifications",
+							"item": [],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
 						{
 							"name": "CREATE Application (OIDC)",
 							"event": [
@@ -1382,6 +1608,53 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Read Application Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "04aee569-006f-4027-80dc-de5a14d776c1",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}",
+									"host": [
+										"{{apiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"applications",
+										"{{appID-appauth}}"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"event": [
@@ -1501,39 +1774,54 @@
 	],
 	"variable": [
 		{
-			"id": "bf6ba797-137d-4842-8a21-cf53e5513822",
+			"id": "d84f059a-ad67-41ff-adcf-d13bc4bd2a37",
 			"key": "apiPath",
 			"value": "https://api.pingone.com/v1"
 		},
 		{
-			"id": "c5d3f02b-592f-4d29-acdf-639b58c39c44",
+			"id": "7644108c-577d-41fc-a408-1ed90bc905fa",
 			"key": "parentEnvID",
 			"value": "parentEnvID"
 		},
 		{
-			"id": "ed8da02b-3ff5-40b4-bbe4-593735f69ebd",
+			"id": "66286a0a-d028-465d-8ffe-93ea89a6e838",
 			"key": "adminAppID",
 			"value": "adminAppID"
 		},
 		{
-			"id": "ebc27ea0-896f-4f1e-b5a7-d9bbfcb7d2ed",
+			"id": "172ad7cf-09d3-4e13-abe3-ec608e939a7d",
 			"key": "adminAppSecret",
 			"value": "adminAppSecret"
 		},
 		{
-			"id": "97d64446-064e-4d12-bf54-54a9ecd277b3",
+			"id": "99bd5292-286f-4c26-9162-81211177ed0a",
 			"key": "defaultUsername",
 			"value": "p1mfauser"
 		},
 		{
-			"id": "cf50c293-42fe-4973-8bcd-7081b1c0869b",
+			"id": "a7910de2-65df-41d1-97e2-f205660f8d7a",
 			"key": "defaultEmail",
 			"value": "p1mfauser@mailinator.com"
 		},
 		{
-			"id": "542f7623-4b55-472d-b167-58d18bbb2318",
+			"id": "4f3b766d-d971-43f1-8fc0-0e491c0f4eef",
 			"key": "defaultUserPassword",
 			"value": "2FederateM0re!"
+		},
+		{
+			"id": "5f913f19-af59-4830-9f87-d23dab7b6831",
+			"key": "androidFCMPackageName",
+			"value": "com.android.example.app"
+		},
+		{
+			"id": "98f04260-1925-40fa-88d0-edcda9ea5f32",
+			"key": "androidFCMServerKey",
+			"value": "<See Cloud Messaging Settings>"
+		},
+		{
+			"id": "3b20d31c-f604-467f-9692-d0d28218177f",
+			"key": "licenseType",
+			"value": "MFA"
 		}
 	],
 	"protocolProfileBehavior": {}
