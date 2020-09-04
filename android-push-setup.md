@@ -14,6 +14,24 @@
     - Enter a unique Package Name and record it down. E.g. com.mycompany.p1mfa.app
     - Enter in an App Nickname. E.g. My Company Authenticator
 4. Download google-services.json
+5. Open the new Project e.g. "My Company MFA App".
+6. Edit the new Android app e.g. "My Company Authenticator".
+7. Under the "Cloud Messaging" tab, locate and record the Server Key value. This will be used later to set up P1MFA/P14C.
+
+## Configure P1MFA/P14C to enable Android Push Notification
+
+### Option 1: Configure with Postman
+1. Edit the provided Postman Collection variables and set the following with the details from your FCM application:
+    - androidFCMPackageName
+    - androidFCMServerKey
+2. Execute the Postman requests under "3 Create Applications\PF Adapter EndUser\Enable Android Push Notifications"
+
+### Option 2: Configure manually
+1. Edit your Native application e.g. "PF Adapter EndUser".
+    - Under the Authenticator tab, apply the following details with the details from your FCM application:
+        - Package Name
+        - Server Key
+2. Edit your MFA Only Policy and enable Push Notifications.
 
 ## Set up your Android application
 
