@@ -1014,10 +1014,6 @@
 									{
 										"key": "Content-Type",
 										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJraWQiOiJkZWZhdWx0IiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJodHRwczpcL1wvYXBpLnBpbmdvbmUuY29tIiwib3JnIjoiOWMyOWQ4YWYtYjViNC00OTA2LWI0YzctMjdmMmFhZGQxNDE0IiwiaXNzIjoiaHR0cHM6XC9cL2F1dGgucGluZ29uZS5jb21cLzllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YlwvYXMiLCJleHAiOjE1OTkxNzUzMDUsImVudiI6IjllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YiIsImlhdCI6MTU5OTE3MTcwNSwiY2xpZW50X2lkIjoiNmQ5OTU5MjMtZGIyMy00ZDhhLTk3YzktNjk3MDA3YjE2NjE2In0.OpKdY44OqFk5uVHQpi0tL4MYGJXLPal_IYtXKNGr1UIJ2Am6jSrjTH38j-p8DCXDRyugMu6cAiZbMsz9RYAw-pGU4-3wxtV_QaNnWti01QH5jCeExtkKg8Enr2Hbl0QTLddAqewyS-hjvF_ukOp3-Qx6XqXWISG6tncP6TO8YYYOAsHIGf29Rn5YlqoA81UR6WyFi1lo63F5Xldiqz1GRS-zR83_tpEoRfe-Ef8phacqhydaNnrHGoYo8UMv_o1FGqOxWEBiine3WQlkEjS_Y-kMqFCGgn2QVh2llbRhqmNh0N9uBblAgBmPbOJcGYx7eumNVDTkcRbemtlafEXSUQ"
 									}
 								],
 								"url": {
@@ -1954,52 +1950,52 @@
 	],
 	"variable": [
 		{
-			"id": "4bed8fe4-ac12-4a95-8d1a-2d63452aa4b2",
+			"id": "92a78e41-60e5-4233-a13b-d00107da2cf7",
 			"key": "apiPath",
 			"value": "https://api.pingone.com/v1"
 		},
 		{
-			"id": "09caee24-1dee-47af-91fc-64397ca87b1d",
+			"id": "7168c15a-d266-4096-919f-cbd2484aae88",
 			"key": "parentEnvID",
 			"value": "parentEnvID"
 		},
 		{
-			"id": "90192f8e-6150-412d-b824-73975c64c6ce",
+			"id": "3ff3b920-56b3-4f33-ac7c-bfbc759cf2ea",
 			"key": "adminAppID",
 			"value": "adminAppID"
 		},
 		{
-			"id": "7f5c6a9f-eab6-4b6a-9671-d3edcde2a1ea",
+			"id": "1083d331-68b8-4312-a51d-8e6a0df74d74",
 			"key": "adminAppSecret",
 			"value": "adminAppSecret"
 		},
 		{
-			"id": "7552217d-6f99-48ff-bc61-5a4c594640f2",
+			"id": "ad96b926-f453-4e02-8559-4036761c9d19",
 			"key": "defaultUsername",
 			"value": "p1mfauser"
 		},
 		{
-			"id": "db0e5746-1bd2-434e-91bd-99a812e05087",
+			"id": "ea220e91-c5b0-4c53-8b00-ce104efdc480",
 			"key": "defaultEmail",
 			"value": "p1mfauser@mailinator.com"
 		},
 		{
-			"id": "52e73157-9e87-4be4-b0fa-d92fea7ae955",
+			"id": "1273fe37-6245-4035-a057-8a6c16d792b4",
 			"key": "defaultUserPassword",
 			"value": "2FederateM0re!"
 		},
 		{
-			"id": "76a25284-f45a-4525-9d1b-71541494acf9",
+			"id": "dbec8409-2d7c-424a-9dc9-7c905cf41520",
 			"key": "androidFCMPackageName",
 			"value": "com.android.example.app"
 		},
 		{
-			"id": "2721fe13-990a-4ad9-afb8-094a6ee06c97",
+			"id": "f5219631-596d-480b-998b-29307aff7177",
 			"key": "androidFCMServerKey",
 			"value": "<See Cloud Messaging Settings>"
 		},
 		{
-			"id": "e337ecce-4083-4453-9c24-2895394f095e",
+			"id": "4ce5cf7f-3d81-461e-b6a9-2ae375a7dbd8",
 			"key": "licenseType",
 			"value": "MFA"
 		}
