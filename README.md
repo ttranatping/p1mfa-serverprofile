@@ -1,6 +1,16 @@
 # PingOne MFA for PingFederate Quickstart
 
+## Pre-requisites
+- P14C account or a P1MFA account
+- Ping devops keys
+- Docker installed and optionally docker-compose
+
+## Features
 PingFederate server profile which configures P14C for 1FA (using html form adapter and P14C PCV), and 2FA (using the new P14C MFA Adapter).
+
+- Postman collection to set up an MFA environment.
+- Configurable PingFederate server profile to configure end-to-end flow with the P1MFA IdP Adapter.
+- Android Push Notification setup ([see here](android-push-setup.md))
 
 ## P14C Configuration
 
