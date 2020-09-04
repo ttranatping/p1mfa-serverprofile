@@ -21,7 +21,7 @@
 ## Configure P1MFA/P14C to enable Android Push Notification
 
 ### Option 1: Configure with Postman
-1. Edit the provided Postman Collection variables and set the following with the details from your FCM application:
+1. Edit the provided [Postman Collection](postman_setup_p1mfa.json) variables and set the following with the details from your FCM application:
     - androidFCMPackageName
     - androidFCMServerKey
 2. Execute the Postman requests under "3 Create Applications\PF Adapter EndUser\Enable Android Push Notifications"
