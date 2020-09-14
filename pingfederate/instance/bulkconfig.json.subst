@@ -1104,7 +1104,7 @@
             "fields": [
               {
                 "name": "Environment ID",
-                "value": "2314"
+                "value": "${P14C_ENVIRONMENTID}"
               },
               {
                 "name": "Application Client ID",
