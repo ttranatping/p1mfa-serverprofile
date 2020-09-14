@@ -17,7 +17,7 @@ version: "2.4"
 #-------------------------------------------------------------------------------------
 
 services:
-  pingfederate:
+  pingfederatep1mfa:
     image: ${PING_IDENTITY_DEVOPS_REGISTRY}/pingfederate:${PING_IDENTITY_DEVOPS_TAG}
     env_file:
       - ${HOME}/.pingidentity/devops

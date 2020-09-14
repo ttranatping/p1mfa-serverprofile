@@ -1107,23 +1107,23 @@
                 "value": "${P14C_ENVIRONMENTID}"
               },
               {
-                "name": "End User Client ID",
+                "name": "APPLICATION CLIENT ID",
                 "value": "${P14C_ENDUSER_CLIENTID}"
               },
               {
-                "name": "End User Client Secret",
+                "name": "APPLICATION CLIENT SECRET",
                 "value": "${P14C_ENDUSER_CLIENTSECRET}"
               },
               {
-                "name": "Worker Client ID",
+                "name": "PINGFEDERATE CONNECTION CLIENT ID",
                 "value": "${P14C_WORKER_CLIENTID}"
               },
               {
-                "name": "Worker Client Secret",
+                "name": "PINGFEDERATE CONNECTION CLIENT SECRET",
                 "value": "${P14C_WORKER_CLIENTSECRET}"
               },
               {
-                "name": "Authentication Policy",
+                "name": "PINGONE AUTHENTICATION POLICY",
                 "value": ""
               },
               {
