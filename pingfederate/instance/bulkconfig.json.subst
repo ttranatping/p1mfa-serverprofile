@@ -1108,19 +1108,19 @@
               },
               {
                 "name": "Application Client ID",
-                "value": "${P14C_WORKER_CLIENTID}"
-              },
-              {
-                "name": "Application Client Secret",
-                "value": "${P14C_WORKER_CLIENTSECRET}"
-              },
-              {
-                "name": "PingFederate Connection Client ID",
                 "value": "${P14C_ENDUSER_CLIENTID}"
               },
               {
-                "name": "PingFederate Connection Client Secret",
+                "name": "Application Client Secret",
                 "value": "${P14C_ENDUSER_CLIENTSECRET}"
+              },
+              {
+                "name": "PingFederate Connection Client ID",
+                "value": "${P14C_WORKER_CLIENTID}"
+              },
+              {
+                "name": "PingFederate Connection Client Secret",
+                "value": "${P14C_WORKER_CLIENTSECRET}"
               },
               {
                 "name": "PingOne Authentication Policy",
