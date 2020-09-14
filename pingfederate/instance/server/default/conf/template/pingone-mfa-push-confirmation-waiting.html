@@ -24,8 +24,7 @@ is not recommended as it may interfere with expected server behavior.
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="assets/css/pingone-mfa-adapter.css">
-    <script type="text/javascript" src="assets/scripts/pingone-mfa-spinner.js"></script>
+    <link rel="stylesheet" href="assets/css/pingone-mfa.css">
     <style>
         .page__content:before {
             content: none;
@@ -72,7 +71,7 @@ is not recommended as it may interfere with expected server behavior.
                         <span class="text-block__text">$languagePackMessages.getMessage($messageKeyPrefix, "request.sent.title")</span>
                     </p>
                     <p class="text-block text-block--large">
-                        <span class="text-block__text">$selectedDevice.model.name</span>
+                        <span class="text-block__text">$selectedDevice.name</span>
                     </p>
                 </div>
             </div>
@@ -87,7 +86,6 @@ is not recommended as it may interfere with expected server behavior.
 </div>
 
 <script>
-
     var pollingFlag = 'true';
     function pollAuthenticationStatus() {
         if(pollingFlag === 'true')

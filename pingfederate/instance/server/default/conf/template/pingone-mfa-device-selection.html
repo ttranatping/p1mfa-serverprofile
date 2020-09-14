@@ -22,7 +22,7 @@ is not recommended as it may interfere with expected server behavior.
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,
     user-scalable=no"/>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-    <link rel="stylesheet" href="assets/css/pingone-mfa-adapter.css">
+    <link rel="stylesheet" href="assets/css/pingone-mfa.css">
     <style>
         .page__content:before {
             content: none;
@@ -68,7 +68,11 @@ is not recommended as it may interfere with expected server behavior.
                     <div data-id="tile-selector">
                         <div class="tile-selector tile-selector--stacked">
                             #foreach($device in $devices)
-                            #set ($deviceMessageKey = ${device.type.toLowerCase()})
+                            #if($device.type.toLowerCase() == "android" || $device.type.toLowerCase() == "iphone")
+                                #set ($deviceMessageKey = "mobile")
+                            #else
+                                #set ($deviceMessageKey = ${device.type.toLowerCase()})
+                            #end
                             #set( $deviceMessageKeyPrefix = "${deviceMessageKey}.$messageKeyPrefix" )
                             #set( $deviceIcon = $languagePackMessages.getMessage($deviceMessageKeyPrefix, "icon"))
                             #if($device.usable)
@@ -86,7 +90,7 @@ is not recommended as it may interfere with expected server behavior.
                                         <svg width="30" height="30" viewBox="0 0 28.4 20.85">
                                             <path d="M26.54,0.36H1.84c-0.83,0-1.5,0.67-1.5,1.5v17.1c0,0.83,0.67,1.5,1.5,1.5h24.7c0.83,0,1.5-0.67,1.5-1.5V1.86 C28.04,1.03,27.37,0.36,26.54,0.36z M27.04,1.86v17.1c0,0.11-0.04,0.2-0.1,0.28l-7.99-8.67l8.03-8.95 C27.01,1.7,27.04,1.78,27.04,1.86z M1.34,18.96V1.86c0-0.06,0.01-0.11,0.03-0.16l7.96,8.87L1.35,19 C1.35,18.99,1.34,18.98,1.34,18.96z M14.81,13.69c-0.37,0.37-0.96,0.37-1.31,0.02L2.41,1.36h23.47L14.81,13.69z M10.01,11.32 l2.77,3.08c0.38,0.38,0.87,0.56,1.36,0.56c0.5,0,1.01-0.19,1.4-0.58l2.74-3.05l7.51,8.14H2.29L10.01,11.32z"></path>
                                         </svg>
-                                        #elseif($deviceIcon == "voice")
+                                        #elseif($deviceIcon == "mobile")
                                         <svg class="device-icon__icon--mobile" width="27px" height="27px"
                                              viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
                                             <g id="mobile" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -118,7 +122,11 @@ is not recommended as it may interfere with expected server behavior.
                                     <div class="flex-row flex-row--align-stretch flex-row--justify-start flex-row--flex-direction-column flex-row--column-spacing-sm"
                                          data-id="flex-row">
                                         <div class="tile-button__content">
-                                            $languagePackMessages.getMessage($deviceMessageKeyPrefix, "message")
+                                            #if($deviceMessageKey == "mobile")
+                                                $device.name
+                                            #else
+                                                $device.target
+                                            #end
                                         </div>
                                     </div>
                                 </div>
