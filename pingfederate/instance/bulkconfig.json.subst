@@ -1104,26 +1104,30 @@
             "fields": [
               {
                 "name": "Environment ID",
-                "value": "${P14C_ENVIRONMENTID}"
+                "value": "2314"
               },
               {
-                "name": "APPLICATION CLIENT ID",
-                "value": "${P14C_ENDUSER_CLIENTID}"
-              },
-              {
-                "name": "APPLICATION CLIENT SECRET",
-                "value": "${P14C_ENDUSER_CLIENTSECRET}"
-              },
-              {
-                "name": "PINGFEDERATE CONNECTION CLIENT ID",
+                "name": "Application Client ID",
                 "value": "${P14C_WORKER_CLIENTID}"
               },
               {
-                "name": "PINGFEDERATE CONNECTION CLIENT SECRET",
+                "name": "Application Client Secret",
                 "value": "${P14C_WORKER_CLIENTSECRET}"
               },
               {
-                "name": "PINGONE AUTHENTICATION POLICY",
+                "name": "PingFederate Connection Client ID",
+                "value": "${P14C_ENDUSER_CLIENTID}"
+              },
+              {
+                "name": "PingFederate Connection Client Secret",
+                "value": "${P14C_ENDUSER_CLIENTSECRET}"
+              },
+              {
+                "name": "PingOne Authentication Policy",
+                "value": ""
+              },
+              {
+                "name": "Test Username",
                 "value": ""
               },
               {
@@ -1132,30 +1136,30 @@
               },
               {
                 "name": "Messages Files",
-                "value": "pingone-mfa-adapter-messages"
+                "value": "pingone-mfa-messages"
               },
               {
                 "name": "User Not Found Failure Mode",
-                "value": "Bypass Authentication"
+                "value": "Block user"
               },
               {
                 "name": "Service Unavailable Failure Mode",
-                "value": "Bypass Authentication"
+                "value": "Block user"
               },
               {
                 "name": "Change Device",
                 "value": "Allow"
               },
               {
-                "name": "Success Screens",
+                "name": "Show Success Screens",
                 "value": "true"
               },
               {
-                "name": "Error Screens",
+                "name": "Show Error Screens",
                 "value": "true"
               },
               {
-                "name": "Timeout Screens",
+                "name": "Show Timeout Screens",
                 "value": "true"
               },
               {
