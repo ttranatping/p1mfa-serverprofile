@@ -235,10 +235,6 @@
                 "value": "${P14C_AUTHORIZATION_SERVICE}"
               },
               {
-                "name": "Read Timeout",
-                "value": "10000"
-              },
-              {
                 "name": "Connection Timeout",
                 "value": "10000"
               },
