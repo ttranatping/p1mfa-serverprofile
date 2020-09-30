@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "d4cd7ae2-564d-44ff-bd9c-60eb717333fb",
+		"_postman_id": "152d6a9c-64d2-4a89-99fe-4a0e5ef96836",
 		"name": "P14MFA Demo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "0 Initialise base variables",
+			"name": "0 Premade demo details",
 			"item": [
 				{
 					"name": "Token Admin App (client_credentials)",
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c8e975b2-7571-4d9c-b703-d08da80af029",
+								"id": "511b5271-83eb-4b5d-b948-6a95e77f0038",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -93,12 +93,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://auth.pingone.com/{{parentEnvID}}/as/token",
-							"protocol": "https",
+							"raw": "{{authPath}}/{{parentEnvID}}/as/token",
 							"host": [
-								"auth",
-								"pingone",
-								"com"
+								"{{authPath}}"
 							],
 							"path": [
 								"{{parentEnvID}}",
@@ -115,7 +112,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "11095658-cd75-4053-b77e-589b0155a387",
+								"id": "9ccd6f1e-9ebb-4799-a9e7-50f5dbb0e583",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -169,7 +166,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5052adb7-5c47-4bc5-aab8-77b3116c8571",
+								"id": "2621df31-6cef-422f-b101-c88ff7151aed",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -177,7 +174,7 @@
 									"pm.test(\"Set environment variables for next test\", function () {",
 									"    var response = pm.response.json();",
 									"    const licenseObject = response._embedded.licenses.find",
-									"      (m => m.package === pm.collectionVariables.get(\"licenseType\"));",
+									"      (m => m.package === \"MFA\");",
 									"    pm.environment.set(\"licenseID\", licenseObject.id);",
 									"});"
 								],
@@ -227,7 +224,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dcbb5e84-aa78-41a8-9562-9c25a801a806",
+								"id": "a3118100-b11c-4385-acaa-a75ec71b0bc1",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -269,28 +266,6 @@
 					"response": []
 				}
 			],
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "8fe9342e-6cc3-448d-afe0-bd81c2bd880c",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "20bee71d-346b-4b56-a5d6-83efec7728d2",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			],
 			"protocolProfileBehavior": {}
 		},
 		{
@@ -302,7 +277,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "39a1d1a3-bef9-4f98-a5e7-755984a73e4d",
+								"id": "6281dfc1-d701-4e71-8873-d08dbe03486f",
 								"exec": [
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -340,7 +315,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"P14MFA Demo - {{$timestamp}}\",\n    \"region\": \"NA\",\n    \"type\": \"SANDBOX\",\n    \"description\": \"Test Description\",\n    \"license\": {\"id\":\"{{licenseID}}\"}\n}",
+							"raw": "{\n    \"name\": \"P14MFA Demo - {{$timestamp}}\",\n    \"region\": \"{{region}}\",\n    \"type\": \"SANDBOX\",\n    \"description\": \"Test Description\",\n    \"license\": {\"id\":\"{{licenseID}}\"}\n}",
 							"options": {
 								"raw": {}
 							}
@@ -363,7 +338,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e41792e4-97e5-43cc-bb3d-a4db148f3929",
+								"id": "b98e1bf0-5125-4b89-b44f-a29c631f03d6",
 								"exec": [
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -426,7 +401,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3a0d45b0-991f-45db-ab12-4966a45b0218",
+								"id": "616ba4bd-5556-4b2b-9026-33dfaf80ab8f",
 								"exec": [
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -489,19 +464,12 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "672a9426-3a0d-4bb1-b9e3-33c5f6a82f9a",
+								"id": "57b516a7-8567-4eb7-9537-77b4df3a7179",
 								"exec": [
 									"pm.test(\"Validate response status=201\", function () {",
 									"    pm.response.to.have.status(201);",
 									"});",
-									"pm.test(\"Validate id property exists\", function () {",
-									"    var response = pm.response.json();",
-									"    pm.expect(response).to.have.property('id');",
-									"});",
-									"pm.test(\"Set environment variables for next test\", function () {",
-									"    var response = pm.response.json();",
-									"    pm.environment.set(\"signonPolicyActionID\", response.id);",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -554,7 +522,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8a494b69-10f6-4ee7-905a-025fe7d5ed85",
+								"id": "4b64f12c-7391-41b4-ab9c-d0e43a80b1f1",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -603,7 +571,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "34a71fff-57e7-4d14-b902-8237be7d0c1a",
+								"id": "66a7bfef-f611-4ee9-bf2f-7a9c2667371c",
 								"exec": [
 									"pm.test(\"Validate response status=200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -655,7 +623,7 @@
 			"name": "2 Create Users",
 			"item": [
 				{
-					"name": "Create default user",
+					"name": "p14c-au-tam@mailinator.com",
 					"item": [
 						{
 							"name": "CREATE",
@@ -663,7 +631,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "6ce19e57-ca54-409b-b0cc-4ca90a660f65",
+										"id": "11fb60aa-8b3f-49ae-b9ad-a5348667fe4b",
 										"exec": [
 											"pm.test(\"Validate response status=201\", function () {",
 											"    pm.response.to.have.status(201);",
@@ -701,7 +669,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"{{defaultEmail}}\",\n    \"name\": {\n        \"given\": \"Tam\",\n        \"family\": \"Tran\"\n    },\n    \"population\": {\n        \"id\": \"{{popID}}\"\n    },\n    \"username\": \"{{defaultUsername}}\"\n}",
+									"raw": "{\n    \"email\": \"p1mfauser@mailinator.com\",\n    \"name\": {\n        \"given\": \"SampleMFA\",\n        \"family\": \"User\"\n    },\n    \"population\": {\n        \"id\": \"{{popID}}\"\n    },\n    \"username\": \"p1mfauser\"\n}",
 									"options": {
 										"raw": {}
 									}
@@ -726,7 +694,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d6bfed81-df30-4fa0-a41c-b668e3bbf09c",
+										"id": "bf3a1362-64fe-4996-9360-744dcab56413",
 										"exec": [
 											""
 										],
@@ -781,7 +749,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "1e2f05d8-f02a-4709-96e9-d7343ce7658c",
+										"id": "7ff668d7-3402-4837-9d86-3a0db04686c7",
 										"exec": [
 											""
 										],
@@ -809,7 +777,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"currentPassword\":\"2Access!\",\n  \"newPassword\":\"{{defaultUserPassword}}\"\n}",
+									"raw": "{\n  \"currentPassword\":\"2Access!\",\n  \"newPassword\":\"2FederateM0re!\"\n}",
 									"options": {
 										"raw": {}
 									}
@@ -836,7 +804,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "886b6e76-d4bf-4bb1-827d-888060998e4f",
+										"id": "cd48159c-7a73-435c-8779-c7eac1e33187",
 										"exec": [
 											""
 										],
@@ -891,7 +859,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "5b0e5770-7ecf-49e0-8441-e603ce21b5fd",
+										"id": "48789b00-76ef-4963-bc4c-e7836ad8ed20",
 										"exec": [
 											""
 										],
@@ -919,7 +887,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"type\": \"EMAIL\",\n    \"email\": \"{{defaultEmail}}\"\n}",
+									"raw": "{\n    \"type\": \"EMAIL\",\n    \"email\": \"p1mfauser@mailinator.com\"\n}",
 									"options": {
 										"raw": {}
 									}
@@ -944,182 +912,13 @@
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Pair mobile",
-					"item": [
-						{
-							"name": "Create Pairing Key",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "c373748b-5122-4fb3-bb24-e017565797b7",
-										"exec": [
-											"pm.test(\"Validate response status=201\", function () {",
-											"    pm.response.to.have.status(201);",
-											"});",
-											"pm.test(\"Validate id property exists\", function () {",
-											"    var response = pm.response.json();",
-											"    pm.expect(response).to.have.property('id');",
-											"});",
-											"pm.test(\"Set environment variables for next test\", function () {",
-											"    var response = pm.response.json();",
-											"    pm.environment.set(\"pairingID\", response.id);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJraWQiOiJkZWZhdWx0IiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJodHRwczpcL1wvYXBpLnBpbmdvbmUuY29tIiwib3JnIjoiOWMyOWQ4YWYtYjViNC00OTA2LWI0YzctMjdmMmFhZGQxNDE0IiwiaXNzIjoiaHR0cHM6XC9cL2F1dGgucGluZ29uZS5jb21cLzllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YlwvYXMiLCJleHAiOjE1OTkxNzUzMDUsImVudiI6IjllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YiIsImlhdCI6MTU5OTE3MTcwNSwiY2xpZW50X2lkIjoiNmQ5OTU5MjMtZGIyMy00ZDhhLTk3YzktNjk3MDA3YjE2NjE2In0.OpKdY44OqFk5uVHQpi0tL4MYGJXLPal_IYtXKNGr1UIJ2Am6jSrjTH38j-p8DCXDRyugMu6cAiZbMsz9RYAw-pGU4-3wxtV_QaNnWti01QH5jCeExtkKg8Enr2Hbl0QTLddAqewyS-hjvF_ukOp3-Qx6XqXWISG6tncP6TO8YYYOAsHIGf29Rn5YlqoA81UR6WyFi1lo63F5Xldiqz1GRS-zR83_tpEoRfe-Ef8phacqhydaNnrHGoYo8UMv_o1FGqOxWEBiine3WQlkEjS_Y-kMqFCGgn2QVh2llbRhqmNh0N9uBblAgBmPbOJcGYx7eumNVDTkcRbemtlafEXSUQ"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"applications\": [\n    { \n      \"id\": \"{{appID-appauth}}\" \n    }\n  ]\n}"
-								},
-								"url": {
-									"raw": "https://api.pingone.com/v1/environments/{{envID}}/users/{{userID-1}}/pairingKeys",
-									"protocol": "https",
-									"host": [
-										"api",
-										"pingone",
-										"com"
-									],
-									"path": [
-										"v1",
-										"environments",
-										"{{envID}}",
-										"users",
-										"{{userID-1}}",
-										"pairingKeys"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Pairing Key Status",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "https://api.pingone.com/v1/environments/{{envID}}/users/{{userID-1}}/pairingKeys/{{pairingID}}",
-									"protocol": "https",
-									"host": [
-										"api",
-										"pingone",
-										"com"
-									],
-									"path": [
-										"v1",
-										"environments",
-										"{{envID}}",
-										"users",
-										"{{userID-1}}",
-										"pairingKeys",
-										"{{pairingID}}"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Get User Devices",
-					"item": [
-						{
-							"name": "Get user devices",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJraWQiOiJkZWZhdWx0IiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiJodHRwczpcL1wvYXBpLnBpbmdvbmUuY29tIiwib3JnIjoiOWMyOWQ4YWYtYjViNC00OTA2LWI0YzctMjdmMmFhZGQxNDE0IiwiaXNzIjoiaHR0cHM6XC9cL2F1dGgucGluZ29uZS5jb21cLzllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YlwvYXMiLCJleHAiOjE1OTkxNzUzMDUsImVudiI6IjllYmQyY2Y3LWFhZWUtNGJjNy04N2M2LWU4ZGIzMTYwMTU1YiIsImlhdCI6MTU5OTE3MTcwNSwiY2xpZW50X2lkIjoiNmQ5OTU5MjMtZGIyMy00ZDhhLTk3YzktNjk3MDA3YjE2NjE2In0.OpKdY44OqFk5uVHQpi0tL4MYGJXLPal_IYtXKNGr1UIJ2Am6jSrjTH38j-p8DCXDRyugMu6cAiZbMsz9RYAw-pGU4-3wxtV_QaNnWti01QH5jCeExtkKg8Enr2Hbl0QTLddAqewyS-hjvF_ukOp3-Qx6XqXWISG6tncP6TO8YYYOAsHIGf29Rn5YlqoA81UR6WyFi1lo63F5Xldiqz1GRS-zR83_tpEoRfe-Ef8phacqhydaNnrHGoYo8UMv_o1FGqOxWEBiine3WQlkEjS_Y-kMqFCGgn2QVh2llbRhqmNh0N9uBblAgBmPbOJcGYx7eumNVDTkcRbemtlafEXSUQ"
-									}
-								],
-								"url": {
-									"raw": "https://api.pingone.com/v1/environments/{{envID}}/users/{{userID-1}}/devices",
-									"protocol": "https",
-									"host": [
-										"api",
-										"pingone",
-										"com"
-									],
-									"path": [
-										"v1",
-										"environments",
-										"{{envID}}",
-										"users",
-										"{{userID-1}}",
-										"devices"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
 				}
 			],
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "57fe7a1a-3499-4085-8dd8-466097f5a5ae",
+						"id": "265f7c09-cb18-455e-8685-6bef7ee741d8",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1129,7 +928,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4d8c5a9b-59c7-4ae6-8887-629cc7a8b2b2",
+						"id": "099baa8c-bc0e-4414-8af0-fa368a1a4082",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1151,7 +950,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "009c5e93-f5f0-4085-9475-e3be3796793a",
+										"id": "301db7ce-eddc-43b2-a654-6276b3fed3ed",
 										"exec": [
 											"pm.test(\"Validate response status=201\", function () {",
 											"    pm.response.to.have.status(201);",
@@ -1214,7 +1013,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "b12d11e2-b783-4263-8d8f-ce6afb01613d",
+										"id": "740e6515-c061-4dad-b665-ce5feb7cd6b9",
 										"exec": [
 											"pm.test(\"Validate response status=200\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -1283,7 +1082,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "1f7202b3-d110-431c-a374-ed331ddb67cc",
+										"id": "931027e2-a6cb-4332-bd76-1b763c181cd6",
 										"exec": [
 											""
 										],
@@ -1331,14 +1130,153 @@
 								}
 							},
 							"response": []
-						},
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "PF Adapter EndUser",
+					"item": [
 						{
-							"name": "Read Application Details",
+							"name": "CREATE Application (OIDC)",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
-										"id": "16c231f1-7fa7-48e9-b7a9-838af7feb598",
+										"id": "41a95cc5-db57-427e-8e33-201ae67e4fcf",
+										"exec": [
+											"pm.test(\"Validate response status=201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"pm.test(\"Validate id property exists\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.expect(response).to.have.property('id');",
+											"});",
+											"pm.test(\"Set environment variables for next test\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.environment.set(\"appID-appauth\", response.id);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"PingFederate Adapter - EndUserApp\",\n  \"enabled\": true,\n  \"type\": \"NATIVE_APP\",\n  \"protocol\": \"OPENID_CONNECT\",\n  \"responseTypes\": [\n    \"ID_TOKEN\",\n    \"TOKEN\"\n  ],\n  \"grantTypes\": [\n    \"IMPLICIT\"\n  ],\n  \"refreshTokenDuration\": 2592000,\n  \"tokenEndpointAuthMethod\": \"CLIENT_SECRET_POST\",\n  \"pkceEnforcement\": \"OPTIONAL\",\n  \"refreshTokenRollingDuration\": 15552000,\n  \"redirectUris\": [\n  ]\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{apiPath}}/environments/{{envID}}/applications",
+									"host": [
+										"{{apiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"applications"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE Application Secret",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d36f3393-e1b9-4303-92e7-61c01d80b009",
+										"exec": [
+											"pm.test(\"Validate response status=200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Validate secret property exists\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.expect(response).to.have.property('secret');",
+											"});",
+											"pm.test(\"Set environment variables for next test\", function () {",
+											"    var response = pm.response.json();",
+											"    pm.environment.set(\"appID-appauth-secret\", response.secret);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/secret",
+									"host": [
+										"{{apiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"applications",
+										"{{appID-appauth}}",
+										"secret"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Assign MFA Policy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ed9e558d-dbe5-4e41-becd-d58cb6328347",
 										"exec": [
 											""
 										],
@@ -1357,15 +1295,22 @@
 										}
 									]
 								},
-								"method": "GET",
+								"method": "POST",
 								"header": [
 									{
 										"key": "Content-Type",
 										"value": "application/json"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"priority\": 1,\n    \"signOnPolicy\": {\n    \t\"id\": \"{{signonPolicyID}}\"\n    }\n}",
+									"options": {
+										"raw": {}
+									}
+								},
 								"url": {
-									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-workerapp}}",
+									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/signOnPolicyAssignments",
 									"host": [
 										"{{apiPath}}"
 									],
@@ -1373,493 +1318,74 @@
 										"environments",
 										"{{envID}}",
 										"applications",
-										"{{appID-workerapp}}"
+										"{{appID-appauth}}",
+										"signOnPolicyAssignments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Assign Profile Scope",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1bbaee9c-8557-438e-bc08-49ea9eadd28f",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"resource\": {\n        \"id\": \"{{resourceID-openid}}\"\n    },\n    \"scopes\": [\n        {\n        \t\"id\": \"{{scopeID-profile}}\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/grants",
+									"host": [
+										"{{apiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"applications",
+										"{{appID-appauth}}",
+										"grants"
 									]
 								}
 							},
 							"response": []
 						}
 					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "PF Adapter EndUser",
-					"item": [
-						{
-							"name": "Create Application",
-							"item": [
-								{
-									"name": "CREATE Application (OIDC)",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "3deb1d53-4cd8-45fd-b94e-fb5987283061",
-												"exec": [
-													"pm.test(\"Validate response status=201\", function () {",
-													"    pm.response.to.have.status(201);",
-													"});",
-													"pm.test(\"Validate id property exists\", function () {",
-													"    var response = pm.response.json();",
-													"    pm.expect(response).to.have.property('id');",
-													"});",
-													"pm.test(\"Set environment variables for next test\", function () {",
-													"    var response = pm.response.json();",
-													"    pm.environment.set(\"appID-appauth\", response.id);",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"name\": \"PingFederate Adapter - EndUserApp\",\n  \"enabled\": true,\n  \"type\": \"NATIVE_APP\",\n  \"protocol\": \"OPENID_CONNECT\",\n  \"responseTypes\": [\n    \"ID_TOKEN\",\n    \"TOKEN\"\n  ],\n  \"grantTypes\": [\n    \"IMPLICIT\"\n  ],\n  \"refreshTokenDuration\": 2592000,\n  \"tokenEndpointAuthMethod\": \"CLIENT_SECRET_POST\",\n  \"pkceEnforcement\": \"OPTIONAL\",\n  \"refreshTokenRollingDuration\": 15552000,\n  \"redirectUris\": [\n  ]\n}",
-											"options": {
-												"raw": {}
-											}
-										},
-										"url": {
-											"raw": "{{apiPath}}/environments/{{envID}}/applications",
-											"host": [
-												"{{apiPath}}"
-											],
-											"path": [
-												"environments",
-												"{{envID}}",
-												"applications"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "UPDATE Application Secret",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "b22b085a-6477-431f-b603-23b2b02c5a3f",
-												"exec": [
-													"pm.test(\"Validate response status=200\", function () {",
-													"    pm.response.to.have.status(200);",
-													"});",
-													"pm.test(\"Validate secret property exists\", function () {",
-													"    var response = pm.response.json();",
-													"    pm.expect(response).to.have.property('secret');",
-													"});",
-													"pm.test(\"Set environment variables for next test\", function () {",
-													"    var response = pm.response.json();",
-													"    pm.environment.set(\"appID-appauth-secret\", response.secret);",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Authorization",
-												"value": "Bearer {{accessToken}}"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "",
-											"options": {
-												"raw": {}
-											}
-										},
-										"url": {
-											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/secret",
-											"host": [
-												"{{apiPath}}"
-											],
-											"path": [
-												"environments",
-												"{{envID}}",
-												"applications",
-												"{{appID-appauth}}",
-												"secret"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Assign MFA Policy",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "39c626fc-f815-40e4-bc76-40c692fb5fc9",
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"priority\": 1,\n    \"signOnPolicy\": {\n    \t\"id\": \"{{signonPolicyID}}\"\n    }\n}",
-											"options": {
-												"raw": {}
-											}
-										},
-										"url": {
-											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/signOnPolicyAssignments",
-											"host": [
-												"{{apiPath}}"
-											],
-											"path": [
-												"environments",
-												"{{envID}}",
-												"applications",
-												"{{appID-appauth}}",
-												"signOnPolicyAssignments"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Assign Profile Scope",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "cc5add76-242f-4c21-9249-5301eec3b862",
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"resource\": {\n        \"id\": \"{{resourceID-openid}}\"\n    },\n    \"scopes\": [\n        {\n        \t\"id\": \"{{scopeID-profile}}\"\n        }\n    ]\n}",
-											"options": {
-												"raw": {}
-											}
-										},
-										"url": {
-											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/grants",
-											"host": [
-												"{{apiPath}}"
-											],
-											"path": [
-												"environments",
-												"{{envID}}",
-												"applications",
-												"{{appID-appauth}}",
-												"grants"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Read Application Details",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "04aee569-006f-4027-80dc-de5a14d776c1",
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"url": {
-											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}",
-											"host": [
-												"{{apiPath}}"
-											],
-											"path": [
-												"environments",
-												"{{envID}}",
-												"applications",
-												"{{appID-appauth}}"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"protocolProfileBehavior": {},
-							"_postman_isSubFolder": true
-						},
-						{
-							"name": "Enable Android Push Notifications",
-							"item": [
-								{
-									"name": "Configure Package Name",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "56704da2-0e6f-4367-853a-9dd1109c290f",
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"packageName\": \"{{androidFCMPackageName}}\",\n    \"name\": \"PingFederate Adapter - EndUserApp\",\n    \"enabled\": true,\n    \"type\": \"NATIVE_APP\",\n    \"protocol\": \"OPENID_CONNECT\",\n    \"createdAt\": \"2020-09-04T00:40:34.398Z\",\n    \"updatedAt\": \"2020-09-04T00:40:34.398Z\",\n    \"responseTypes\": [\n        \"ID_TOKEN\",\n        \"TOKEN\"\n    ],\n    \"grantTypes\": [\n        \"IMPLICIT\"\n    ],\n    \"refreshTokenDuration\": 2592000,\n    \"tokenEndpointAuthMethod\": \"CLIENT_SECRET_POST\",\n    \"pkceEnforcement\": \"OPTIONAL\",\n    \"refreshTokenRollingDuration\": 15552000,\n    \"redirectUris\": []\n}",
-											"options": {
-												"raw": {}
-											}
-										},
-										"url": {
-											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}",
-											"host": [
-												"{{apiPath}}"
-											],
-											"path": [
-												"environments",
-												"{{envID}}",
-												"applications",
-												"{{appID-appauth}}"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Configure FCM Push",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "3936c1f5-db2e-4dff-98e1-86da0e430dad",
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"type\": \"FCM\",\n  \"key\": \"{{androidFCMServerKey}}\"\n}",
-											"options": {
-												"raw": {}
-											}
-										},
-										"url": {
-											"raw": "{{apiPath}}/environments/{{envID}}/applications/{{appID-appauth}}/pushCredentials",
-											"host": [
-												"{{apiPath}}"
-											],
-											"path": [
-												"environments",
-												"{{envID}}",
-												"applications",
-												"{{appID-appauth}}",
-												"pushCredentials"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Configure Signon Action to include Push",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "052bcea5-abab-4a21-9b15-25e759e40c18",
-												"exec": [
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"type\": \"MULTI_FACTOR_AUTHENTICATION\",\n    \"priority\": 1,\n    \"sms\": {\n        \"enabled\": true\n    },\n    \"boundBiometrics\": {\n        \"enabled\": false\n    },\n    \"securityKey\": {\n        \"enabled\": false\n    },\n    \"email\": {\n        \"enabled\": true\n    },\n    \"applications\": [\n        {\n            \"id\": \"{{appID-appauth}}\",\n            \"autoEnrollment\": {\n                \"enabled\": true\n            },\n            \"deviceAuthorization\": {\n                \"enabled\": true\n            }\n        }\n    ]\n}",
-											"options": {
-												"raw": {}
-											}
-										},
-										"url": {
-											"raw": "{{apiPath}}/environments/{{envID}}/signOnPolicies/{{signonPolicyID}}/actions/{{signonPolicyActionID}}",
-											"host": [
-												"{{apiPath}}"
-											],
-											"path": [
-												"environments",
-												"{{envID}}",
-												"signOnPolicies",
-												"{{signonPolicyID}}",
-												"actions",
-												"{{signonPolicyActionID}}"
-											]
-										}
-									},
-									"response": []
-								}
-							],
-							"protocolProfileBehavior": {},
-							"_postman_isSubFolder": true
-						}
-					],
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7d6b9473-3bed-4c82-b793-d0585f74fe9a",
+								"id": "29b82493-7496-40e0-b27e-37c4d545d0b8",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1869,7 +1395,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "06942bfe-d63a-448f-8c9d-caf72815d986",
+								"id": "9d2c6e38-442b-4098-9654-ff6394f8cc1f",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1885,7 +1411,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9da17871-cf10-4d84-88cd-071f5f63ab16",
+						"id": "e8426258-4e11-4ad0-82b4-fdf63a082a12",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1895,7 +1421,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7c2df994-193f-4cf8-9b67-b5df6b11a282",
+						"id": "c26c50cb-054a-446e-b867-f9f6d6dc2f6a",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1906,7 +1432,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Get Environment Details - Don't run outside POC/Demo",
+			"name": "Get Environment Details",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -1928,7 +1454,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"environmentId\":\"{{envID}}\",\n\t\"populationId\":\"{{popID}}\",\n    \"androidFCMPackageName\": \"{{androidFCMPackageName}}\",\n    \"test-users\": [{\n        \"username\": \"{{defaultUsername}}\",\n        \"password\": \"{{defaultUserPassword}}\"\n    }],\n\t\"admin-url\":\"https://console.pingone.com/index.html?env={{envID}}\",\n\t\"applications\":[\n\t\t{\n\t\t\t\"workerapp-client_id\":\"{{appID-workerapp}}\",\n\t\t\t\"workerapp-client_secret\":\"{{appID-workerapp-secret}}\"\n\t\t},\n\t\t{\n\t\t\t\"enduser-client_id\":\"{{appID-appauth}}\",\n\t\t\t\"enduser-client_secret\":\"{{appID-appauth-secret}}\"\n\t\t}\n\t]\n}",
+					"raw": "{\n\t\"environmentId\":\"{{envID}}\",\n\t\"populationId\":\"{{popID}}\",\n\t\"admin-url\":\"https://console.pingone.com/index.html?env={{envID}}\",\n\t\"applications\":[\n\t\t{\n\t\t\t\"workerapp-client_id\":\"{{appID-workerapp}}\",\n\t\t\t\"workerapp-client_secret\":\"{{appID-workerapp-secret}}\"\n\t\t},\n\t\t{\n\t\t\t\"enduser-client_id\":\"{{appID-appauth}}\",\n\t\t\t\"enduser-client_secret\":\"{{appID-appauth-secret}}\"\n\t\t}\n\t]\n}",
 					"options": {
 						"raw": {}
 					}
@@ -1952,7 +1478,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5840dc92-09e9-4f32-9cd1-492e9456387f",
+				"id": "6fce246e-5511-4fa4-9b7f-a89d56aaac86",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1962,7 +1488,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "769d3db5-09e7-4566-80a6-64ee41bd1bf5",
+				"id": "1fdd4f81-d0dc-470a-af42-19217c1eb4b2",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1972,54 +1498,29 @@
 	],
 	"variable": [
 		{
-			"id": "281c76d2-4099-460c-8cae-f1be975cb01f",
+			"id": "dd1a9285-8d4c-4cf7-b203-9cc64a5b262b",
 			"key": "apiPath",
-			"value": "https://api.pingone.com/v1"
+			"value": "https://api.pingone.asia/v1"
 		},
 		{
-			"id": "3857289c-947e-4628-8e79-bf169831e19b",
+			"id": "34d13c87-3578-45f6-97a5-2002bd7e1548",
 			"key": "parentEnvID",
-			"value": "parentEnvID"
+			"value": "{{parentEnvID}}"
 		},
 		{
-			"id": "c0cc9a0d-8379-4dd4-a1f2-fcc4168c8649",
+			"id": "be508bde-c118-4d37-8522-e8b6acce8a9c",
 			"key": "adminAppID",
-			"value": "adminAppID"
+			"value": "{{adminAppID}}"
 		},
 		{
-			"id": "290eabd5-fb70-4ad7-b12d-1e737268a64e",
+			"id": "bcab34c4-cccd-4448-805e-0a3c5cc68668",
 			"key": "adminAppSecret",
-			"value": "adminAppSecret"
+			"value": "{{adminAppSecret}}"
 		},
 		{
-			"id": "4930bc4f-1477-42ec-b3da-75642b0158a7",
-			"key": "defaultUsername",
-			"value": "p1mfauser"
-		},
-		{
-			"id": "073fdd10-bbff-4b58-9529-333fc2ada608",
-			"key": "defaultEmail",
-			"value": "p1mfauser@mailinator.com"
-		},
-		{
-			"id": "08ea4023-db95-413e-8e7e-e9fcdbcbc611",
-			"key": "defaultUserPassword",
-			"value": "2FederateM0re!"
-		},
-		{
-			"id": "094684af-2ae4-4634-bf55-d3b154c1e8d1",
-			"key": "androidFCMPackageName",
-			"value": "com.android.example.app"
-		},
-		{
-			"id": "eae87104-35a9-42c1-b064-7a30e6971a32",
-			"key": "androidFCMServerKey",
-			"value": "<See Cloud Messaging Settings>"
-		},
-		{
-			"id": "28a02ee9-6264-44b6-9986-52e27a10747a",
-			"key": "licenseType",
-			"value": "MFA"
+			"id": "b0198c63-bc35-4514-9113-6aa20f03933a",
+			"key": "authPath",
+			"value": "https://auth.pingone.asia"
 		}
 	],
 	"protocolProfileBehavior": {}
