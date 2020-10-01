@@ -24,6 +24,9 @@ A postman collection is provided to help you get you set up quickly.
       - parentEnvID
       - adminAppID (worker app configured in your parent environment)
       - adminAppSecret
+      - apiPath
+      - authPath
+      - licenseType
 3. Configure an empty Postman environment.
 4. Execute the Postman requests in sequence.
 5. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
