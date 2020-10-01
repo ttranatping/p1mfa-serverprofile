@@ -92,5 +92,5 @@ Alternatively you can run the following manual steps:
 6. Log in with a P14C user that has MFA enabled.
     - if you set up P14C/P1MFA using Postman:
       - the default user is: p1mfauser/2FederateM0re!
-      - the default email is: p1mfauser@mailinator.com (so check the OTP at mailinator.com).
+      - the default email is: p1mfauser@mailinator.com (you can check the OTP at mailinator.com).
     
