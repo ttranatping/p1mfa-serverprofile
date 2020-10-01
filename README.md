@@ -26,13 +26,19 @@ A postman collection is provided to help you get you set up quickly.
 3. Configure the collection variables (right click collection and select Edit).
     - Set the parent environment settings:
       - parentEnvID
-      - adminAppID (worker app configured in your parent environment)
-      - adminAppSecret
-      - apiPath
-      - authPath
+        - found in P14C -> Settings -> Environment -> Properties.
       - licenseType
-        - "MFA" is the license type for PingOne MFA customers.
-        - The available licenses can be found in the PingOne Environment Properties page (P14C -> Settings -> Environment -> Properties).
+        - found in P14C -> Settings -> Environment -> Properties.
+      - adminAppID
+        - worker app configured in your parent environment.
+      - adminAppSecret
+        - worker app configured in your parent environment.
+      - apiPath
+        - https://api.pingone.com/v1 | https://api.pingone.asia/v1 | https://api.pingone.eu/v1
+      - authPath
+        - https://auth.pingone.com | https://auth.pingone.asia | https://auth.pingone.eu
+      - smsNumber
+        - Your mobile number if you wish to test SMS.
 4. Configure an empty Postman environment.
 5. Execute the Postman requests in sequence.
 6. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
