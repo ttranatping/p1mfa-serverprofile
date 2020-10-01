@@ -623,7 +623,7 @@
 			"name": "2 Create Users",
 			"item": [
 				{
-					"name": "p14c-au-tam@mailinator.com",
+					"name": "p1mfauser",
 					"item": [
 						{
 							"name": "CREATE",
@@ -1454,7 +1454,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"environmentId\":\"{{envID}}\",\n\t\"populationId\":\"{{popID}}\",\n\t\"admin-url\":\"https://console.pingone.com/index.html?env={{envID}}\",\n\t\"applications\":[\n\t\t{\n\t\t\t\"workerapp-client_id\":\"{{appID-workerapp}}\",\n\t\t\t\"workerapp-client_secret\":\"{{appID-workerapp-secret}}\"\n\t\t},\n\t\t{\n\t\t\t\"enduser-client_id\":\"{{appID-appauth}}\",\n\t\t\t\"enduser-client_secret\":\"{{appID-appauth-secret}}\"\n\t\t}\n\t]\n}",
+					"raw": "{\n\t\"environmentId\":\"{{envID}}\",\n\t\"populationId\":\"{{popID}}\",\n\t\"admin-url\":\"https://console.pingone.com/index.html?env={{envID}}\",\n\t\"applications\":[\n\t\t{\n\t\t\t\"pingfederate-connection-client_id\":\"{{appID-workerapp}}\",\n\t\t\t\"pingfederate-connection-client_secret\":\"{{appID-workerapp-secret}}\"\n\t\t},\n\t\t{\n\t\t\t\"application-client_id\":\"{{appID-appauth}}\",\n\t\t\t\"application-client_secret\":\"{{appID-appauth-secret}}\"\n\t\t}\n\t]\n}",
 					"options": {
 						"raw": {}
 					}
@@ -1498,29 +1498,34 @@
 	],
 	"variable": [
 		{
-			"id": "dd1a9285-8d4c-4cf7-b203-9cc64a5b262b",
+			"id": "d1ff5035-7f28-433f-bb2e-0207c10c0900",
 			"key": "apiPath",
 			"value": "https://api.pingone.asia/v1"
 		},
 		{
-			"id": "34d13c87-3578-45f6-97a5-2002bd7e1548",
+			"id": "ed771d6e-e934-4a40-934d-bc128fe27ac5",
 			"key": "parentEnvID",
 			"value": "{{parentEnvID}}"
 		},
 		{
-			"id": "be508bde-c118-4d37-8522-e8b6acce8a9c",
+			"id": "98b07607-4ec5-45e0-abc0-3f06788099ea",
 			"key": "adminAppID",
 			"value": "{{adminAppID}}"
 		},
 		{
-			"id": "bcab34c4-cccd-4448-805e-0a3c5cc68668",
+			"id": "23e43c5d-544d-4396-9689-b80c6d8d1a9b",
 			"key": "adminAppSecret",
 			"value": "{{adminAppSecret}}"
 		},
 		{
-			"id": "b0198c63-bc35-4514-9113-6aa20f03933a",
+			"id": "03e0badc-8172-4b91-934e-c6230abc266c",
 			"key": "authPath",
 			"value": "https://auth.pingone.asia"
+		},
+		{
+			"id": "6e167e04-c9dc-44f4-b8ff-b07c11f47771",
+			"key": "licenseType",
+			"value": "MFA"
 		}
 	],
 	"protocolProfileBehavior": {}
