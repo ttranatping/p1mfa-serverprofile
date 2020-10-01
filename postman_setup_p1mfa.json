@@ -908,6 +908,62 @@
 								"description": "\"phone\" -> (Based on E.164 & E.123): Leading plus sign, 1 to 3 digits country code, dot separator, 4 to 14 digits phone number, optionally 1 to 8 digits extension: ^\\+[0-9]{1,3}\\.[0-9]{4,14}(?:x[0-9]{1,8})?$\nEx: +1.3034682900x1234"
 							},
 							"response": []
+						},
+						{
+							"name": "CREATE User Device (SMS) - will error without a valid number",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ea4ee3fe-8ffb-4082-a969-be1bf9461978",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"SMS\",\n    \"phone\": \"{{smsNumber}}\"\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{apiPath}}/environments/{{envID}}/users/{{userID-1}}/devices",
+									"host": [
+										"{{apiPath}}"
+									],
+									"path": [
+										"environments",
+										"{{envID}}",
+										"users",
+										"{{userID-1}}",
+										"devices"
+									]
+								},
+								"description": "\"phone\" -> (Based on E.164 & E.123): Leading plus sign, 1 to 3 digits country code, dot separator, 4 to 14 digits phone number, optionally 1 to 8 digits extension: ^\\+[0-9]{1,3}\\.[0-9]{4,14}(?:x[0-9]{1,8})?$\nEx: +1.3034682900x1234"
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -1498,34 +1554,39 @@
 	],
 	"variable": [
 		{
-			"id": "d1ff5035-7f28-433f-bb2e-0207c10c0900",
+			"id": "afc931c4-e434-4e64-a414-09ea82c99e5a",
 			"key": "apiPath",
 			"value": "https://api.pingone.asia/v1"
 		},
 		{
-			"id": "ed771d6e-e934-4a40-934d-bc128fe27ac5",
+			"id": "b82eb997-50ee-4463-afa6-7a41c7d4450f",
 			"key": "parentEnvID",
 			"value": "{{parentEnvID}}"
 		},
 		{
-			"id": "98b07607-4ec5-45e0-abc0-3f06788099ea",
+			"id": "d1abc495-6994-4c75-860f-69bd995957a3",
 			"key": "adminAppID",
 			"value": "{{adminAppID}}"
 		},
 		{
-			"id": "23e43c5d-544d-4396-9689-b80c6d8d1a9b",
+			"id": "b1b41883-3daf-4a31-aa76-f17e90143c44",
 			"key": "adminAppSecret",
 			"value": "{{adminAppSecret}}"
 		},
 		{
-			"id": "03e0badc-8172-4b91-934e-c6230abc266c",
+			"id": "1b6e4e47-b575-436e-a23d-e7ddd70dd209",
 			"key": "authPath",
 			"value": "https://auth.pingone.asia"
 		},
 		{
-			"id": "6e167e04-c9dc-44f4-b8ff-b07c11f47771",
+			"id": "c61ed8c2-46f5-4c84-a84c-8294c2dabb03",
 			"key": "licenseType",
 			"value": "MFA"
+		},
+		{
+			"id": "3a2d82f3-71cb-44b2-b6b4-099f783204d7",
+			"key": "smsNumber",
+			"value": "+6100000000"
 		}
 	],
 	"protocolProfileBehavior": {}
