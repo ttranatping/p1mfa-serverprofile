@@ -24,7 +24,7 @@ A postman collection is provided to help you get you set up quickly.
     - Leave everything else as default.
 2. Import the [postman collection](postman_setup_p1mfa.json) into Postman.
 3. Configure the collection variables (right click collection and select Edit).
-Set the parent environment settings:
+Set the following collection variables:
 
 | Variable Name | Description | Value
 | --- | --- | ---
