@@ -75,11 +75,15 @@ Alternatively you can run the following manual steps:
     - Instantiate from override.env.template.
         - cp override.env.template override.env
     - At minimum, update the following:
-        - P14C_ENVIRONMENTID=
-        - P14C_PFCONNECTION_CLIENTID=
-        - P14C_PFCONNECTION_CLIENTSECRET=
-        - P14C_APPLICATION_CLIENTID=
-        - P14C_APPLICATION_CLIENTSECRET=
+
+| Environment Variable | Description | "Get Environment Details" value
+| --- | --- | ---
+| P14C_ENVIRONMENT_ID | The ID of the environment of the P1MFA instance (e.g. created using Postman) | environmentId
+| P14C_PFCONNECTION_CLIENTID | The PF Connection Client ID (Postman: 3 Create Applications / PF Connection Client). | pingfederate-connection-client_id
+| P14C_PFCONNECTION_CLIENTSECRET | The PF Connection Client Secret (Postman: 3 Create Applications / PF Connection Client). | pingfederate-connection-client_secret
+| P14C_APPLICATION_CLIENTID | The Application Client ID (Postman: 3 Create Applications / PF Application Client). | application-client_id
+| P14C_APPLICATION_CLIENTSECRET | The Application Client Secret (Postman: 3 Create Applications / PF Application Client). | application-client_secret
+
 4. Start the docker container using one of the two methods:
     - docker-compose up -d
     - docker run -p 9031:9031 -p 9999:9999 -it --env-file override.env --env-file ~/.pingidentity/devops --rm  "pingidentity/pingfederate:edge"
