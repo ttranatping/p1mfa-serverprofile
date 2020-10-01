@@ -24,6 +24,9 @@ A postman collection is provided to help you get you set up quickly.
       - parentEnvID
       - adminAppID (worker app configured in your parent environment)
       - adminAppSecret
+      - apiPath
+      - authPath
+      - licenseType ("MFA" is the license type for PingOne MFA customers)
 3. Configure an empty Postman environment.
 4. Execute the Postman requests in sequence.
 5. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
@@ -40,17 +43,18 @@ Alternatively you can run the following manual steps:
 
 1. Configure an MFA only Authentication Policy.
      - Example name: "MFA-Only-Policy".
-2. Create 2x OAuth clients in P14C as instructed by the p14c adapter.
-     - Worker app
-       - Example name: PF Adapter Worker Client
-       - Roles: Identity Data Admin
+2. Create a PingFederate connection (P14C -> Connections -> Product Platform -> PingFederate).
+     - Admin Role: MFA, PCV, and provisioning
+     - Save the client ID and client secret as "PingOne Connection client details".
+3. Create an application OAuth client in P14C.
      - Native app
        - Example name: PF Adapter End User Client
        - Scope: openid+profile
        - Response Types: ID Token, Token
        - Grant Type: Implicit
        - Policy: MFA-Only-Policy
-3. [Create a user](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user), [enable MFA](https://apidocs.pingidentity.com/pingone/platform/v1/api/#put-update-user-mfa-enabled), add MFA devices ([sms](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-sms)|[email](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-email)).
+     - Save the client ID and client secret as "PingOne application client details".
+4. [Create a user](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user), [enable MFA](https://apidocs.pingidentity.com/pingone/platform/v1/api/#put-update-user-mfa-enabled), add MFA devices ([sms](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-sms)|[email](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-mfa-user-device-email)).
 
 ## Launch docker and test
 
