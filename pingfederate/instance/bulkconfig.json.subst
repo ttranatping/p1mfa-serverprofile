@@ -855,7 +855,7 @@
               },
               {
                 "name": "Allow Password Changes",
-                "value": "false"
+                "value": "true"
               },
               {
                 "name": "Password Management System",
