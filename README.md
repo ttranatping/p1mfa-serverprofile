@@ -43,10 +43,10 @@ Alternatively you can run the following manual steps:
 
 1. Configure an MFA only Authentication Policy.
      - Example name: "MFA-Only-Policy".
-2. Create a PingFederate connection (Connections -> Product Platform -> PingFederate)
+2. Create a PingFederate connection (P14C -> Connections -> Product Platform -> PingFederate).
      - Admin Role: MFA, PCV, and provisioning
      - Save the client ID and client secret as "PingOne Connection client details".
-3. Create an application OAuth client in P14C as instructed by the p14c adapter.
+3. Create an application OAuth client in P14C.
      - Native app
        - Example name: PF Adapter End User Client
        - Scope: openid+profile
