@@ -38,7 +38,7 @@ A postman collection is provided to help you get you set up quickly.
       - authPath
         - https://auth.pingone.com | https://auth.pingone.asia | https://auth.pingone.eu
       - smsNumber
-        - Your mobile number if you wish to test SMS.
+        - Your mobile number (with country code) if you wish to test SMS.
 4. Configure an empty Postman environment.
 5. Execute the Postman requests in sequence.
 6. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
