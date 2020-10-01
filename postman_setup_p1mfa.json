@@ -888,7 +888,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"type\": \"EMAIL\",\n    \"email\": \"p1mfauser@mailinator.com\"\n}",
+									"raw": "{\n    \"type\": \"EMAIL\",\n    \"email\": \"{{emailAddress}}\"\n}",
 									"options": {
 										"raw": {}
 									}
@@ -1555,39 +1555,44 @@
 	],
 	"variable": [
 		{
-			"id": "264b6001-5db2-48d2-aa57-1fb29198d35e",
+			"id": "76930025-0ca0-42f5-ae8b-aa88dc4b85c1",
 			"key": "apiPath",
 			"value": "https://api.pingone.asia/v1"
 		},
 		{
-			"id": "c7b6099a-a8d7-4145-87d4-6e819bd870bc",
+			"id": "e7af975f-75a8-4fd7-951a-d21620b41271",
 			"key": "parentEnvID",
 			"value": "{{parentEnvID}}"
 		},
 		{
-			"id": "39b6fa6d-a867-4310-9b05-1cd1598932aa",
+			"id": "647227c0-9992-48e4-8d96-6b5151a0ef80",
 			"key": "adminAppID",
 			"value": "{{adminAppID}}"
 		},
 		{
-			"id": "9a13136a-2e5c-4c42-a3c3-b9775c73f8ca",
+			"id": "6e204738-4020-427f-b6b5-758bc800e712",
 			"key": "adminAppSecret",
 			"value": "{{adminAppSecret}}"
 		},
 		{
-			"id": "f8eb6270-8201-429a-ac66-77fe62e414e6",
+			"id": "a3951ae9-54b4-48ce-af22-f5aa2aae23c5",
 			"key": "authPath",
 			"value": "https://auth.pingone.asia"
 		},
 		{
-			"id": "b510e3b1-194a-4b65-b121-2f09f52d76c6",
+			"id": "6a21bed6-70ef-4025-a356-54bd159a1a89",
 			"key": "licenseType",
 			"value": "MFA"
 		},
 		{
-			"id": "30b0790c-6eca-4722-b481-08e680725e85",
+			"id": "7f34b9c9-1fbc-4e6c-81e8-a6602626c071",
 			"key": "smsNumber",
 			"value": "+6100000000"
+		},
+		{
+			"id": "ac14cf8b-2c3f-48c6-b8f1-a24a79795ab9",
+			"key": "emailAddress",
+			"value": "p1mfauser@mailinator.com"
 		}
 	],
 	"protocolProfileBehavior": {}
