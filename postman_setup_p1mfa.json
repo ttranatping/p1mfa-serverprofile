@@ -1555,37 +1555,37 @@
 	],
 	"variable": [
 		{
-			"id": "a6aaea2b-6739-4865-9b7b-d4f7c599f528",
+			"id": "264b6001-5db2-48d2-aa57-1fb29198d35e",
 			"key": "apiPath",
 			"value": "https://api.pingone.asia/v1"
 		},
 		{
-			"id": "a346f939-a4a2-4c94-84eb-7f957fef5b0e",
+			"id": "c7b6099a-a8d7-4145-87d4-6e819bd870bc",
 			"key": "parentEnvID",
 			"value": "{{parentEnvID}}"
 		},
 		{
-			"id": "b5b9463c-db5d-489e-b11c-035abcace4a1",
+			"id": "39b6fa6d-a867-4310-9b05-1cd1598932aa",
 			"key": "adminAppID",
 			"value": "{{adminAppID}}"
 		},
 		{
-			"id": "02461189-2003-46f8-9117-23a00c452c64",
+			"id": "9a13136a-2e5c-4c42-a3c3-b9775c73f8ca",
 			"key": "adminAppSecret",
 			"value": "{{adminAppSecret}}"
 		},
 		{
-			"id": "27cb7674-7dc9-4252-8c81-045437d72071",
+			"id": "f8eb6270-8201-429a-ac66-77fe62e414e6",
 			"key": "authPath",
 			"value": "https://auth.pingone.asia"
 		},
 		{
-			"id": "3a6913cd-f491-49e7-8059-9a6d0ce86601",
+			"id": "b510e3b1-194a-4b65-b121-2f09f52d76c6",
 			"key": "licenseType",
 			"value": "MFA"
 		},
 		{
-			"id": "332214c3-1887-4407-a469-5fac180b662b",
+			"id": "30b0790c-6eca-4722-b481-08e680725e85",
 			"key": "smsNumber",
 			"value": "+6100000000"
 		}
