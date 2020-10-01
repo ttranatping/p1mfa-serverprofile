@@ -74,7 +74,8 @@ Alternatively you can run the following manual steps:
     - git clone https://github.com/ttranatping/p1mfa-serverprofile.git
 2. Navigate to the p1mfa-serverprofile folder.
 3. Configure override.env providing client details for the native and worker app.
-    - instantiate from override.env.template.
+    - Instantiate from override.env.template.
+        - cp override.env.template override.env
     - At minimum, update the following:
         - P14C_ENVIRONMENTID=
         - P14C_PFCONNECTION_CLIENTID=
