@@ -24,23 +24,19 @@ A postman collection is provided to help you get you set up quickly.
     - Leave everything else as default.
 2. Import the [postman collection](postman_setup_p1mfa.json) into Postman.
 3. Configure the collection variables (right click collection and select Edit).
-    - Set the parent environment settings:
-      - parentEnvID
-        - found in P14C -> Settings -> Environment -> Properties.
-      - licenseType
-        - found in P14C -> Settings -> Environment -> Properties.
-      - adminAppID
-        - worker app configured in your parent environment.
-      - adminAppSecret
-        - worker app configured in your parent environment.
-      - apiPath
-        - https://api.pingone.com/v1 | https://api.pingone.asia/v1 | https://api.pingone.eu/v1
-      - authPath
-        - https://auth.pingone.com | https://auth.pingone.asia | https://auth.pingone.eu
-      - smsNumber
-        - Your mobile number (with country code) if you wish to test SMS OTP.
-      - emailAddress
-        - Your email address if you wish to test Email OTP.
+Set the parent environment settings:
+
+| Variable Name | Description | Value
+| --- | --- | ---
+| parentEnvID | The Environment ID of the parent environment. | Found in P14C -> Settings -> Environment -> Properties.
+| licenseType | The license type applied to your environment. | Found in P14C -> Settings -> Environment -> Properties.
+| adminAppID | The Client ID value of the P1MFA/P14C worker application. | Worker app configured in your parent environment.
+| adminAppSecret | The Client Secret value of the P1MFA/P14C worker application. | Worker app configured in your parent environment.
+| apiPath | The base URL of the P1MFA/P14C API endpoint. | https://api.pingone.com/v1 or https://api.pingone.asia/v1 or https://api.pingone.eu/v1
+| authPath | The base URL of the P1MFA/P14C AuthZ endpoint. | https://auth.pingone.com or https://auth.pingone.asia or https://auth.pingone.eu
+| smsNumber | A valid phone number string can be provided in international format (includes a leading + character), or in any format as long as the region (country code) where the number originates can be determined. | Your mobile number.
+| emailAddress | A valid email address | Your email address.
+        
 4. Configure an empty Postman environment.
 5. Execute the Postman requests in sequence.
 6. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
