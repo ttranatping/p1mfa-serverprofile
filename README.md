@@ -26,7 +26,7 @@ A postman collection is provided to help you get you set up quickly.
       - adminAppSecret
       - apiPath
       - authPath
-      - licenseType
+      - licenseType ("MFA" is the license type for PingOne MFA customers)
 3. Configure an empty Postman environment.
 4. Execute the Postman requests in sequence.
 5. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
