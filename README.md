@@ -26,15 +26,17 @@ A postman collection is provided to help you get you set up quickly.
       - adminAppSecret
       - apiPath
       - authPath
-      - licenseType ("MFA" is the license type for PingOne MFA customers)
+      - licenseType
+        - "MFA" is the license type for PingOne MFA customers.
+        - The available licenses can be found in the PingOne Environment Properties page (P14C -> Settings -> Environment -> Properties).
 3. Configure an empty Postman environment.
 4. Execute the Postman requests in sequence.
 5. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
     - environmentId -> P14C_ENVIRONMENTID
-    - workerapp-client_id -> P14C_WORKER_CLIENTID
-    - workerapp-client_secret -> P14C_WORKER_CLIENTSECRET
-    - enduser-client_id -> P14C_ENDUSER_CLIENTID
-    - enduser-client_secret -> P14C_ENDUSER_CLIENTSECRET
+    - pingfederate-connection-client_id -> P14C_PFCONNECTION_CLIENTID
+    - pingfederate-connection-client_secret -> P14C_PFCONNECTION_CLIENTSECRET
+    - application-client_id -> P14C_APPLICATION_CLIENTID
+    - application-client_secret -> P14C_APPLICATION_CLIENTSECRET
     - Note down the test users (default: p1mfauser/2FederateM0re!)
 
 ### Option 2 - Manually create P1MFA/P14C environment
@@ -65,10 +67,10 @@ Alternatively you can run the following manual steps:
     - instantiate from override.env.template.
     - At minimum, update the following:
         - P14C_ENVIRONMENTID=
-        - P14C_WORKER_CLIENTID=
-        - P14C_WORKER_CLIENTSECRET=
-        - P14C_ENDUSER_CLIENTID=
-        - P14C_ENDUSER_CLIENTSECRET=
+        - P14C_PFCONNECTION_CLIENTID=
+        - P14C_PFCONNECTION_CLIENTSECRET=
+        - P14C_APPLICATION_CLIENTID=
+        - P14C_APPLICATION_CLIENTSECRET=
 4. Start the docker container using one of the two methods:
     - docker-compose up -d
     - docker run -p 9031:9031 -p 9999:9999 -it --env-file override.env --env-file ~/.pingidentity/devops --rm  "pingidentity/pingfederate:edge"
