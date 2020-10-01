@@ -18,8 +18,12 @@ PingFederate server profile which configures P14C for 1FA (using html form adapt
 
 A postman collection is provided to help you get you set up quickly. 
 
-1. Import the [postman collection](postman_setup_p1mfa.json) into Postman.
-2. Configure the collection variables (right click collection and select Edit).
+1. Create a Worker App client/connection in your P14C parent environment.
+    - Name: Postman Collection
+    - App Type: Worker
+    - Leave everything else as default.
+2. Import the [postman collection](postman_setup_p1mfa.json) into Postman.
+3. Configure the collection variables (right click collection and select Edit).
     - Set the parent environment settings:
       - parentEnvID
       - adminAppID (worker app configured in your parent environment)
@@ -29,9 +33,9 @@ A postman collection is provided to help you get you set up quickly.
       - licenseType
         - "MFA" is the license type for PingOne MFA customers.
         - The available licenses can be found in the PingOne Environment Properties page (P14C -> Settings -> Environment -> Properties).
-3. Configure an empty Postman environment.
-4. Execute the Postman requests in sequence.
-5. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
+4. Configure an empty Postman environment.
+5. Execute the Postman requests in sequence.
+6. Collect environment details by running the last request "Get Environment Details" to configure later in override.env.
     - environmentId -> P14C_ENVIRONMENTID
     - pingfederate-connection-client_id -> P14C_PFCONNECTION_CLIENTID
     - pingfederate-connection-client_secret -> P14C_PFCONNECTION_CLIENTSECRET
