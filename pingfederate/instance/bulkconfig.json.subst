@@ -334,7 +334,7 @@
             "enableIdpDiscovery": true
           },
           "federationInfo": {
-            "baseUrl": "https://localhost:9031",
+            "baseUrl": "${PF_BASE_URL}",
             "saml2EntityId": "evaluation",
             "saml1xIssuerId": "",
             "saml1xSourceId": "",
@@ -1596,7 +1596,7 @@
           "clientId": "sampleclient",
           "enabled": true,
           "redirectUris": [
-            "https://localhost:9031/pf/heartbeat.ping"
+            "${PF_BASE_URL}/pf/heartbeat.ping"
           ],
           "grantTypes": [
             "IMPLICIT"
