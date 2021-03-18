@@ -1143,6 +1143,10 @@
                 "value": "${P14C_APPLICATION_CLIENTSECRET}"
               },
               {
+                "name": "PingOne Population",
+                "value": "${P14C_POPULATIONID}"
+              },
+              {
                 "name": "PingOne Authentication Policy",
                 "value": ""
               },
