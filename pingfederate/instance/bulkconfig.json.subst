@@ -1132,7 +1132,7 @@
             "fields": [
               {
                 "name": "PingOne Environment",
-                "value": "3ivHaJBGPUjizQ6sJ61i2I|${3cc97796-3195-4682-a352-a76fba46a14f}"
+                "value": "3ivHaJBGPUjizQ6sJ61i2I|${P14C_ENVIRONMENTID}"
               },
               {
                 "name": "Application Client ID",
