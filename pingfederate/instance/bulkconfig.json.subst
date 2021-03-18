@@ -1183,10 +1183,6 @@
                 "value": "true"
               },
               {
-                "name": "PingOne Authentication API",
-                "value": "${P14C_AUTHORIZATION_SERVICE}"
-              },
-              {
                 "name": "API Request Timeout",
                 "value": "2000"
               },
