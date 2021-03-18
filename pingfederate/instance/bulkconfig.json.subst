@@ -1187,10 +1187,6 @@
                 "value": "${P14C_AUTHORIZATION_SERVICE}"
               },
               {
-                "name": "PingOne Management API",
-                "value": "${P14C_API_SERVICE}"
-              },
-              {
                 "name": "API Request Timeout",
                 "value": "2000"
               },
