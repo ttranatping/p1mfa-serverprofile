@@ -1131,8 +1131,8 @@
             "tables": [],
             "fields": [
               {
-                "name": "Environment ID",
-                "value": "${P14C_ENVIRONMENTID}"
+                "name": "PingOne Environment",
+                "value": "3ivHaJBGPUjizQ6sJ61i2I|9ebd2cf7-aaee-4bc7-87c6-e8db3160155b"
               },
               {
                 "name": "Application Client ID",
@@ -1141,14 +1141,6 @@
               {
                 "name": "Application Client Secret",
                 "value": "${P14C_APPLICATION_CLIENTSECRET}"
-              },
-              {
-                "name": "PingFederate Connection Client ID",
-                "value": "${P14C_PFCONNECTION_CLIENTID}"
-              },
-              {
-                "name": "PingFederate Connection Client Secret",
-                "value": "${P14C_PFCONNECTION_CLIENTSECRET}"
               },
               {
                 "name": "PingOne Authentication Policy",
